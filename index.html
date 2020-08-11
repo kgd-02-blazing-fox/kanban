@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id"
+        content="124739969343-prbrk319k79id28m8304jhq25r3ugce4.apps.googleusercontent.com">
+
+    <title>Kanban</title>
+    <link rel="icon" href="./assets/post-it-note-icon-9.jpg">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!-- login -->
+    <!-- <div id="login" class="container-fluid mt-5">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="border col-md-5" style="padding: 30px; border-radius: 40px;">
+                    <h2 class="justify-content-center text-center">Login to Kanban</h2><br>
+                    <form id="form-login">
+                        <div class="form-group">
+                            <label for="login-email">Email address</label>
+                            <input type="email" class="form-control" id="login-email" placeholder="Johndoe@mail.com"
+                                required>
+                        </div><br>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" class="form-control" id="login-password" required>
+                        </div>
+                        <div class="row"
+                            style="display: flex; flex-direction: column; margin: auto; align-items: center;">
+                            <button type="submit" class="btn btn-primary" style="width: 100px;">Login</button><br>
+                            <div class="g-signin2" data-onsuccess="onSignIn"></div><br>
+                        </div>
+                    </form>
+                    <div class="col-md-12 text-center">
+                        <p class="text-secondary">Doesn't have account yet? <span onclick=""
+                                class="text-primary">Register</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+        <!-- Register -->
+        <!-- <div id="register" class="container-fluid mt-5">
+            <div class="container mt-5">
+                <div class="row justify-content-center">
+                    <div class="border col-md-5" style="padding: 30px; border-radius: 40px;">
+                        <h2 class="justify-content-center text-center">Register a new account</h2> <br>
+                        <form id="form-register">
+                            <div class="form-group">
+                                <label for="register-name">Full name</label>
+                                <input type="text" class="form-control" id="register-name" placeholder="John Doe"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register-email">Email address</label>
+                                <input type="email" class="form-control" id="register-email"
+                                    placeholder="Johndoe@mail.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register-password">Password</label>
+                                <input type="password" class="form-control" id="register-password" required>
+                            </div>
+                            <div style="text-align: center;">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                        <div class="col-md-12 mt-4 text-center">
+                            <p class="text-secondary">Already have an account? <span onclick=""
+                                    class="text-primary">Login</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid" style="height: 195px;"> </div>
+            </div>
+        </div> -->
+        <!-- kanban -->
+        <!-- kanban-nav -->
+        <div class="container-fluid px-0" id="kanban-nav">    
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <span class="navbar-brand" style="pointer-events: none; font-size: 1.5em;" id="kanban-nav-title"><img src="./assets/post-it-note-icon-9.jpg" width="30"/> Kanban</span>
+                    <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                        <a class="nav-link disabled" id="nav-home">Signed in as: Laurentius</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" id="kanban-nav-logout">Logout</a>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>    
+        <!-- kanban-main -->
+        <div class="container-fluid pt-4" id="kanban-main">
+            <div class="row " style="min-height: 75vh;">
+                <!-- kanban-backlog -->
+                <div class="col-xl-3 col-l-3 col-md-6 col-sm-12 col-xs-12 py-2">
+
+                    <div class="card m-0 kanban-card-border">
+                        <div class="card-header kanban-card-header bg-transparent kanban-card-border-bottom mh-100">Backlog</div>
+                        <div class="card-body kanban-card-content p-0">
+                            <!-- content -->
+                            <div class="container-fluid border my-3 py-3">
+                                <h5 class="card-title">Backlog example</h5>
+                                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat quos repellat illo quasi adipisci facere incidunt, eligendi eos unde, harum
+                                <br> <br>
+                                <img src="./assets/write.png" style="width: 30px;">
+                                <img src="./assets/cancel.png" style="width: 30px;">
+                                <img src="./assets/move-right.png" style="width: 30px;float:right">
+                                </p>
+                            </div>
+                            <!-- content ends -->
+                        </div>
+                        <div class="card-footer bg-transparent kanban-card-border-top"><span class="float-right"><img src="./assets/plus.png" style="width: 30px;"></span></div>
+                      </div>
+
+                </div>
+                <!-- kanban-ongoing -->
+                <div class="col-xl-3 col-l-3 col-md-6 col-sm-12 col-xs-12 py-2">
+
+                    <div class="card m-0 kanban-card-border">
+                        <div class="card-header kanban-card-header bg-transparent kanban-card-border-bottom mh-100">To-do</div>
+                        <div class="card-body kanban-card-content p-0">
+                            <!-- content -->
+                            <div class="container-fluid border my-3 py-3">
+                                <h5 class="card-title">To-do example</h5>
+                                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat quos repellat illo quasi adipisci facere incidunt, eligendi eos unde, harum
+                                <br> <br> 
+                                <img src="./assets/move-left.png" style="width: 30px;">
+                                <img src="./assets/write.png" style="width: 30px;">
+                                <img src="./assets/cancel.png" style="width: 30px;">
+                                <img src="./assets/move-right.png" style="width: 30px;float:right">
+                                </p>
+                            </div>
+
+                            <div class="container-fluid border my-3 py-3">
+                                <h5 class="card-title">To-do example</h5>
+                                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat quos repellat illo quasi adipisci facere incidunt, eligendi eos unde, harum
+                                <br> <br> 
+                                <img src="./assets/move-left.png" style="width: 30px;">
+                                <img src="./assets/write.png" style="width: 30px;">
+                                <img src="./assets/cancel.png" style="width: 30px;">
+                                <img src="./assets/move-right.png" style="width: 30px;float:right">
+                                </p>
+                            </div>
+                            <!-- content ends -->
+                        </div>
+                        <div class="card-footer bg-transparent kanban-card-border-top"><span class="float-right"><img src="./assets/plus.png" style="width: 30px;"></span></div>
+                      </div>
+
+                </div>
+                <!-- kanban-pr -->
+                <div class="col-xl-3 col-l-3 col-md-6 col-sm-12 col-xs-12 py-2">
+
+                    <div class="card m-0 kanban-card-border">
+                        <div class="card-header kanban-card-header bg-transparent kanban-card-border-bottom mh-100">Pull-requested</div>
+                        <div class="card-body kanban-card-content p-0">
+                            <!-- content -->
+                            
+                            <!-- content ends -->
+                        </div>
+                        <div class="card-footer bg-transparent kanban-card-border-top"><span class="float-right"><img src="./assets/plus.png" style="width: 30px;"></span></div>
+                      </div>
+
+                </div>
+                <!-- kanban-marked -->
+                <div class="col-xl-3 col-l-3 col-md-6 col-sm-12 col-xs-12 py-2">
+
+                    <div class="card m-0 kanban-card-border">
+                        <div class="card-header kanban-card-header bg-transparent kanban-card-border-bottom mh-100">Marked</div>
+                        <div class="card-body kanban-card-content p-0">
+                            <!-- content -->
+                            <div class="container-fluid border my-3 py-3">
+                                <h5 class="card-title">Marked example</h5>
+                                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat quos repellat illo quasi adipisci facere incidunt, eligendi eos unde, harum
+                                <br> <br> 
+                                <img src="./assets/move-left.png" style="width: 30px;">
+                                <img src="./assets/write.png" style="width: 30px;">
+                                <img src="./assets/cancel.png" style="width: 30px;">
+                                </p>
+                            </div>
+
+                            <div class="container-fluid border my-3 py-3">
+                                <h5 class="card-title">Marked example</h5>
+                                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat quos repellat illo quasi adipisci facere incidunt, eligendi eos unde, harum
+                                <br> <br> <img src="./assets/move-left.png" style="width: 30px;">
+                                <img src="./assets/write.png" style="width: 30px;">
+                                <img src="./assets/cancel.png" style="width: 30px;">
+                                <img src="./assets/move-right.png" style="width: 30px;float:right">
+                                </p>
+                            </div>
+                            <!-- content ends -->
+                        </div>
+                        <div class="card-footer bg-transparent kanban-card-border-top"><span class="float-right"><img src="./assets/plus.png" style="width: 30px;"></span></div>
+                      </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container-fluid text-right" id="kanban-footer">
+            <div class="container p-3">
+                <p>@Hacktiv8 2020-P1 <br> Laurentius Edrick <br>
+                    <span id="kanban-footer-attributions">
+                        Attributions:
+                        <a href="https://icon-library.net/icon/post-it-note-icon-9.html" target="_blank">Post It Note Icon</a> | 
+                        <a href="https://thenounproject.com/ArtZ91/collection/handwritten/" target="_blank">Handwritten Icon</a>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!--delete or use later-->
+
+</body>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<!--add .slim.min.js later if needed-->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
+
+
+</html>
