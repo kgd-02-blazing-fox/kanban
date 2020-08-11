@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Lemonada', cursive;
+  background-image: url('./assets/img/Mountain.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position-x: center; /* Add this line */
+  background-position-y: center; /* Add this line */
+}
+
+
+.header{
+  background-color: #5252526b;
+  height: 65px;
+}
+
+.header .nav{
+  margin: 0;
+  padding: 10px;
+}
+
+.mainKanban{
+  margin: 0 10px;
+}
+
+.scrolling-wrapper{
+  overflow-x: auto;
+  height: 100vh;
+  width: fixed;
+}
+
+.bodyContent {
+  border-radius: 5px;
+  border: solid 1px #dadadaad;
+  background-color: #ebecf0;
+  box-sizing: border-box;
+  margin: 5px 0px;
+  padding: 3px 2px;
+  width: 372px;
+}
+
+.content-kanban {
+  border-radius: 5px;
+  border: solid 1px #dadadaad;
+  background-color: #f4f5f7;
+  margin: 5px 0px;
+  padding: 3px 2px;
+}
