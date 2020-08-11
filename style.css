@@ -11,6 +11,11 @@ body{
   background-color: #e84118;
 }
 
+.fas{
+  color: black;
+  /* letter-spacing: 8px; */
+}
+
 .header{
   background-color: #ffffffe3;
   color: #dfe6e9;
@@ -19,6 +24,15 @@ body{
 .header .nav{
   margin: 0;
   padding: 3px;
+}
+
+.infos{
+  border-radius: 10px;
+  border: solid 1px #dadadaad;
+  background-color: #f5f6fa44;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 6px 6px;
 }
 
 .register{
@@ -31,43 +45,92 @@ body{
   color: white;
 }
 
+.addButton{
+  color: white;
+  padding: 3px;
+  border-radius: 10px;
+  margin-left: 60px;
+  word-spacing: 8px;
+  text-decoration: none;
+}
+.addButton a{
+  color: white;
+  text-decoration: none;
+}
+.addButton i{
+  color: white;
+  text-decoration: none;
+}
+
+.addButton :hover{
+  word-spacing: 8px;
+  padding: 5px 40px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.363);
+  color: black;
+  text-decoration: none;
+}
+
+
 .content{
   border-radius: 10px;
   border: solid 1px #dadadaad;
-  background-color: #f5f6fa36;
-  margin: 5px;
+  background-color: #f5f6fa44;
+  margin: 5px 0px;
+  padding: 3px 2px;
+}
+
+.bodyContent :hover{
+  background-color: #5252526b;
+  color: white;
+}
+
+.content .user{
+  color: rgba(0, 0, 0, 0.541)
+}
+
+.bodyContent{
+  overflow-y: auto;
+  height: 60vh;
+  max-height: 60vh;
 }
 
 .backlog{
-  background-color: #353b48;
+  background-color: #353b486b;
   color: white;
   border-radius: 10px;
   border: solid 2px #dadadaad;
-  margin: 5px;
+  margin: 4px;
   padding: 12px 6px;
+}
+.backlog .content .user{
+  color: rgba(255, 255, 255, 0.521);
 }
 
 .product{
-  background-color: #e84118;
+  background-color: #e8421891;
   border-radius: 10px;
   border: solid 2px #dadadaad;
-  margin: 5px;
+  margin: 4px;
   padding: 12px 6px;
 }
 
 .development{
-  background-color: #fbc531;
+  background-color: #fbc53191;
   border-radius: 10px;
   border: solid 2px #dadadaad;
-  margin: 5px;
+  margin: 4px;
   padding: 12px 6px;
 }
 
 .done{
-  background-color: #40739e;
+  background-color: #9a012f9c;
   color: white;
   border-radius: 10px;
   border: solid 2px #dadadaad;
-  margin: 5px;
+  margin: 4px;
   padding: 12px 6px;
+}
+.done .content .user{
+  color: rgba(255, 255, 255, 0.534);
 }

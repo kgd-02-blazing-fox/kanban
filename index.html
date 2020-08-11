@@ -27,90 +27,132 @@
       </div>
     </div>
   </div>
-  <br>
+
+  <!-- TIME AND INFOS -->
+  <div class=" d-flex justify-content-center">
+    <div class=" infos container row">
+      <div class="col row d-flex align-items-center">
+          <div class="col-1 d-flex justify-content-end"><i class="fas fa-user"></i></div>
+          <div class="col"><b>name</b></div>
+          <div class="col-1 d-flex justify-content-end"><i class="fas fa-bezier-curve"></i></div>
+          <div class="col"><b>organization name</b></div>
+      </div>
+      <div class="col row d-flex align-items-center">
+          <div class="col-1 d-flex justify-content-end"><i class="fas fa-clock"></i></div>
+          <div class="col"><b>00:00</b></div>
+          <div class="col-1 d-flex justify-content-end"><i class="fas fa-calendar-day"></i></div>
+          <div class="col"><b>11/08/2020</b></div>
+      </div>
+    </div>
+  </div>
 
   <!-- KANBAN BODY -->
-  <div class="appbody container-fluid" id="kanbanBody">
-    <div class="d-flex justify-content-around">
+  <div class="addButton container-md">
+    <a href="#"><i class="fas fa-plus-square"></i> POST KANBAN!</a>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="appbody row container-fluid " id="kanbanBody">
 
-      <div class="backlog container-fluid">
+      <!-- BACKLOG -->
+      <div class="backlog container col-sm-5 col-md-5 col-lg-4 col-xl">
         <div class="d-flex justify-content-center">
-          BACKLOG
+          <div>BACKLOG</div>
         </div>
-        <div id="backlogContent">
-          <div class="content">
-            <div class="col-sm">user</div>
-            <div class="col-sm">contents</div>
-            <div class="col-sm d-flex justify-content-end">action</div>
-          </div>
-          <div class="content">
-            <div class="col-sm">user</div>
-            <div class="col-sm">contents</div>
-            <div class="col-sm d-flex justify-content-end">action</div>
-          </div>
-          <div class="content">
-            <div class="col-sm">user</div>
-            <div class="col-sm">contents</div>
-            <div class="col-sm d-flex justify-content-end">action</div>
+        <div class="bodyContent" id="backlogContent">
+          <div class="content container-lg-12">
+            <div class="user container-fluid d-flex justify-content-between">
+              user
+              <div>
+                <a href="#"><i class="fas fa-pen-square"></i></a>
+                <a href="#"><i class="fas fa-trash-alt"></i></a>
+              </div>
+            </div>
+            <div class="container-fluid">contents</div>
+            <div class="container-fluid d-flex justify-content-end">
+              <a href="#"><i class="fas fa-arrow-alt-circle-right"></i></a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="product container-fluid">
+      <!-- PRODUCT -->
+      <div class="product container col-sm-5 col-md-5 col-lg-4 col-xl">
         <div class="d-flex justify-content-center">
           PRODUCT
         </div>
-        <div id="productContent">
-          <div class="content">
-            <div class="col-sm">user</div>
-            <div class="col-sm">contents</div>
-            <div class="col-sm d-flex justify-content-end">action</div>
-          </div>
-          <div class="content">
-            <div class="col-sm">user</div>
-            <div class="col-sm">contents</div>
-            <div class="col-sm d-flex justify-content-end">action</div>
+        <div class="bodyContent" id="productContent">
+          <div class="content container-lg-12">
+            <div class="user container-fluid d-flex justify-content-between">
+              user
+              <div>
+                <a href="#"><i class="fas fa-pen-square"></i></a>
+                <a href="#"><i class="fas fa-trash-alt"></i></a>
+              </div>
+            </div>
+            <div class="container-fluid">contents</div>
+            <div class="container-fluid d-flex justify-content-between">
+              <a href="#"><i class="fas fa-arrow-circle-left"></i></a>
+              <a href="#"><i class="fas fa-arrow-alt-circle-right"></i></a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="development container-fluid">
+      <!-- DEVELOPMENT -->
+      <div class="development container col-sm-5 col-md-5 col-lg-4 col-xl">
         <div class="d-flex justify-content-center">
           DEVELOPMENT
         </div>
-        <div id="developmentContent">
-          <div class="content">
-            <div class="col-sm">user</div>
-            <div class="col-sm">contents</div>
-            <div class="col-sm d-flex justify-content-end">action</div>
+        <div class="bodyContent" id="developmentContent">
+          <div class="content container-lg-12">
+            <div class="user container-fluid d-flex justify-content-between">
+              user
+              <div>
+                <a href="#"><i class="fas fa-pen-square"></i></a>
+                <a href="#"><i class="fas fa-trash-alt"></i></a>
+              </div>
+            </div>
+            <div class="container-fluid">contents</div>
+            <div class="container-fluid d-flex justify-content-between">
+              <a href="#"><i class="fas fa-arrow-circle-left"></i></a>
+              <a href="#"><i class="fas fa-arrow-alt-circle-right"></i></a>
+            </div>
           </div>
-          <div class="content">
-            <div class="col-sm">user</div>
-            <div class="col-sm">contents</div>
-            <div class="col-sm d-flex justify-content-end">action</div>
+          <div class="content container-lg-12">
+            <div class="user container-fluid d-flex justify-content-between">
+              user
+              <div>
+                <a href="#"><i class="fas fa-pen-square"></i></a>
+                <a href="#"><i class="fas fa-trash-alt"></i></a>
+              </div>
+            </div>
+            <div class="container-fluid">contents</div>
+            <div class="container-fluid d-flex justify-content-between">
+              <a href="#"><i class="fas fa-arrow-circle-left"></i></a>
+              <a href="#"><i class="fas fa-arrow-alt-circle-right"></i></a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="done container-fluid">
+      <!-- DONE -->
+      <div class="done container col-sm-5 col-md-5 col-lg-4 col-xl">
         <div class="d-flex justify-content-center">
           DONE
         </div>
-        <div id="doneContent">
-          <div class="content">
-            <div class="col-sm">user</div>
-            <div class="col-sm">contents</div>
-            <div class="col-sm d-flex justify-content-end">action</div>
-          </div>
-          <div class="content">
-            <div class="col-sm">user</div>
-            <div class="col-sm">contents</div>
-            <div class="col-sm d-flex justify-content-end">action</div>
-          </div>
-          <div class="content">
-            <div class="col-sm">user</div>
-            <div class="col-sm">contents</div>
-            <div class="col-sm d-flex justify-content-end">action</div>
+        <div class="bodyContent" id="doneContent">
+          <div class="content container-lg-12">
+            <div class="user container-fluid d-flex justify-content-between">
+              user
+              <div>
+                <!-- <a href="#"><i class="fas fa-pen-square"></i></a> -->
+                <a href="#"><i class="fas fa-trash-alt"></i></a>
+              </div>
+            </div>
+            <div class="container-fluid">contents</div>
+            <div class="container-fluid d-flex justify-content-end">
+              <a href="#"><i class="fas fa-check-circle"></i></i></a>
+            </div>
           </div>
         </div>
       </div>
@@ -129,19 +171,19 @@
           <div>
             <form class="form-group" id="registerForm"><br>
               <div>
-                <label for="registerName">Name</label>
+                <label for="registerName">name</label>
                 <input class="form-control" type="text" placeholder="your name?" id="registerName" required>
                 <br>
               </div>
               <div>
-                <label for="registerEmail">Email</label>
-                <input class="form-control" type="text" placeholder="your email?" id="registerEmail" required>
+                <label for="registerEmail">email</label>
+                <input class="form-control" type="email" placeholder="your email?" id="registerEmail" required>
                 <br>
               </div>
               <div>
                 <label for="registerPassword">Password</label>
-                <input class="form-control" type="text" placeholder="your super secret password" id="registerPassword"
-                  required>
+                <input class="form-control" type="password" placeholder="your super secret password"
+                  id="registerPassword" required>
                 <br>
               </div>
               <div>
@@ -167,12 +209,12 @@
             <form class="form-group" id="loginForm"><br>
               <div>
                 <label for="loginEmail">Email</label>
-                <input class="form-control" type="text" placeholder="your email?" id="loginEmail" required>
+                <input class="form-control" type="email" placeholder="your email?" id="loginEmail" required>
                 <br>
               </div>
               <div>
                 <label for="loginPassword">Password</label>
-                <input class="form-control" type="text" placeholder="your super secret password" id="loginPassword"
+                <input class="form-control" type="password" placeholder="your super secret password" id="loginPassword"
                   required>
                 <br>
               </div>
@@ -196,6 +238,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/d327c23d67.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
