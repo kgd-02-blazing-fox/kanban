@@ -12,7 +12,60 @@
   <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <!-- <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet"> -->
   <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> -->
-  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Lemonada', cursive;
+      background-image: url('./assets/img/Mountain.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position-x: center;
+      background-position-y: center;
+    }
+
+
+    .header {
+      background-color: #5252526b;
+      height: 65px;
+    }
+
+    .header .nav {
+      margin: 0;
+      padding: 10px;
+    }
+
+    .mainKanban {
+      margin: 0 10px;
+    }
+
+    .scrolling-wrapper {
+      overflow-x: auto;
+      height: 100vh;
+      width: fixed;
+    }
+
+    .bodyContent {
+      border-radius: 5px;
+      border: solid 1px #dadadaad;
+      background-color: #ebecf0;
+      box-sizing: border-box;
+      margin: 5px 0px;
+      padding: 3px 2px;
+      width: 372px;
+    }
+
+    .content-kanban {
+      border-radius: 5px;
+      border: solid 1px #dadadaad;
+      background-color: #f4f5f7;
+      margin: 5px 0px;
+      padding: 3px 2px;
+    }
+  </style>
 
 
   <title>Kanban Apps</title>
@@ -65,7 +118,7 @@
       <div class="product container">
         <div class="bodyContent" id="productContent">
           <div class="d-flex justify-content-start">
-            PRODUCT
+            <div>PRODUCT</div>
           </div>
           <div class="content container-lg-12">
             <div class="content-kanban container-fluid d-flex justify-content-between">
@@ -89,7 +142,7 @@
       <div class="development container">
         <div class="bodyContent" id="developmentContent">
           <div class="d-flex justify-content-start">
-            DEVELOPMENT
+            <div>DEVELOPMENT</div>
           </div>
           <div class="content container-lg-12">
             <div class="content-kanban container-fluid d-flex justify-content-between">
@@ -112,7 +165,7 @@
       <div class="done container">
         <div class="bodyContent" id="doneContent">
           <div class="d-flex justify-content-start">
-            DONE
+            <div>DONE</div>
           </div>
           <div class="content container-lg-12">
             <div class="content-kanban container-fluid d-flex justify-content-between">
