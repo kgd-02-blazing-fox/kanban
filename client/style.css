@@ -1,0 +1,44 @@
+#headers{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color:#f2d81a ;
+    height: 75px;
+    align-items: center;
+}
+
+.itemHeader{
+    font-size: 25px;
+    font-family: monospace;
+    font-weight: 600;
+    color: black ;
+}
+
+.kanbanContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 75px;
+    align-items: flex-start;
+    height: 500px;
+    margin-top: 30px;
+}
+.section{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 100%;
+    overflow: auto;
+    align-items: center;
+}
+.sectionTitle{
+    background-color: yellow;
+    width: 80%;
+    text-align: center;
+    height: 35px;
+    border: solid 2px black;
+    line-height: 35px;
+    border-radius: 5px;
+    font-family: monospace;
+    font-weight: bold;
+}
