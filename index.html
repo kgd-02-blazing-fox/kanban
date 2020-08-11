@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,300;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>KANBAN</title>
+</head>
+
+<body>
+  <!-- HEADER & LOGOUT -->
+  <div class="header container-fluid">
+    <div class=" nav row d-flex justify-content-between">
+      <div>
+        <img src="assets/kanban.png" width="150px">
+      </div>
+      <div id="logout">
+        <button class="btn">logout</button>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <!-- KANBAN BODY -->
+  <div class="appbody container-fluid" id="kanbanBody">
+    <div class="d-flex justify-content-around">
+
+      <div class="backlog container-fluid">
+        <div class="d-flex justify-content-center">
+          BACKLOG
+        </div>
+        <div id="backlogContent">
+          <div class="content">
+            <div class="col-sm">user</div>
+            <div class="col-sm">contents</div>
+            <div class="col-sm d-flex justify-content-end">action</div>
+          </div>
+          <div class="content">
+            <div class="col-sm">user</div>
+            <div class="col-sm">contents</div>
+            <div class="col-sm d-flex justify-content-end">action</div>
+          </div>
+          <div class="content">
+            <div class="col-sm">user</div>
+            <div class="col-sm">contents</div>
+            <div class="col-sm d-flex justify-content-end">action</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product container-fluid">
+        <div class="d-flex justify-content-center">
+          PRODUCT
+        </div>
+        <div id="productContent">
+          <div class="content">
+            <div class="col-sm">user</div>
+            <div class="col-sm">contents</div>
+            <div class="col-sm d-flex justify-content-end">action</div>
+          </div>
+          <div class="content">
+            <div class="col-sm">user</div>
+            <div class="col-sm">contents</div>
+            <div class="col-sm d-flex justify-content-end">action</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="development container-fluid">
+        <div class="d-flex justify-content-center">
+          DEVELOPMENT
+        </div>
+        <div id="developmentContent">
+          <div class="content">
+            <div class="col-sm">user</div>
+            <div class="col-sm">contents</div>
+            <div class="col-sm d-flex justify-content-end">action</div>
+          </div>
+          <div class="content">
+            <div class="col-sm">user</div>
+            <div class="col-sm">contents</div>
+            <div class="col-sm d-flex justify-content-end">action</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="done container-fluid">
+        <div class="d-flex justify-content-center">
+          DONE
+        </div>
+        <div id="doneContent">
+          <div class="content">
+            <div class="col-sm">user</div>
+            <div class="col-sm">contents</div>
+            <div class="col-sm d-flex justify-content-end">action</div>
+          </div>
+          <div class="content">
+            <div class="col-sm">user</div>
+            <div class="col-sm">contents</div>
+            <div class="col-sm d-flex justify-content-end">action</div>
+          </div>
+          <div class="content">
+            <div class="col-sm">user</div>
+            <div class="col-sm">contents</div>
+            <div class="col-sm d-flex justify-content-end">action</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div><br>
+
+  <!-- REGISTER -->
+  <div class="container d-flex justify-content-center">
+    <div class="container-fluid">
+      <div class="col-sm d-flex flex-column">
+        <h3 class="d-flex justify-content-center">register</h3>
+      </div>
+      <div class="register container d-flex justify-content-center">
+        <div class="col-lg">
+          <div>
+            <form class="form-group" id="registerForm"><br>
+              <div>
+                <label for="registerName">Name</label>
+                <input class="form-control" type="text" placeholder="your name?" id="registerName" required>
+                <br>
+              </div>
+              <div>
+                <label for="registerEmail">Email</label>
+                <input class="form-control" type="text" placeholder="your email?" id="registerEmail" required>
+                <br>
+              </div>
+              <div>
+                <label for="registerPassword">Password</label>
+                <input class="form-control" type="text" placeholder="your super secret password" id="registerPassword"
+                  required>
+                <br>
+              </div>
+              <div>
+                <button type="submit" class="btn btn-warning">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <!-- LOGIN -->
+  <div class="container d-flex justify-content-center" id="loginBody">
+    <div class="container-fluid">
+      <div class="col-sm d-flex flex-column">
+        <h3 class="d-flex justify-content-center">login</h3>
+      </div>
+      <div class="register container d-flex justify-content-center">
+        <div class="col-lg">
+          <div>
+            <form class="form-group" id="loginForm"><br>
+              <div>
+                <label for="loginEmail">Email</label>
+                <input class="form-control" type="text" placeholder="your email?" id="loginEmail" required>
+                <br>
+              </div>
+              <div>
+                <label for="loginPassword">Password</label>
+                <input class="form-control" type="text" placeholder="your super secret password" id="loginPassword"
+                  required>
+                <br>
+              </div>
+              <div>
+                <button type="submit" class="btn btn-warning">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

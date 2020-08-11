@@ -1,0 +1,73 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+body{
+  background-image: url("./assets/bg2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #e84118;
+}
+
+.header{
+  background-color: #ffffffe3;
+  color: #dfe6e9;
+}
+
+.header .nav{
+  margin: 0;
+  padding: 3px;
+}
+
+.register{
+  border-radius: 10px;
+  border: solid 2px #dadadaad;
+  background-color: #353b4870;
+}
+
+.register label{
+  color: white;
+}
+
+.content{
+  border-radius: 10px;
+  border: solid 1px #dadadaad;
+  background-color: #f5f6fa36;
+  margin: 5px;
+}
+
+.backlog{
+  background-color: #353b48;
+  color: white;
+  border-radius: 10px;
+  border: solid 2px #dadadaad;
+  margin: 5px;
+  padding: 12px 6px;
+}
+
+.product{
+  background-color: #e84118;
+  border-radius: 10px;
+  border: solid 2px #dadadaad;
+  margin: 5px;
+  padding: 12px 6px;
+}
+
+.development{
+  background-color: #fbc531;
+  border-radius: 10px;
+  border: solid 2px #dadadaad;
+  margin: 5px;
+  padding: 12px 6px;
+}
+
+.done{
+  background-color: #40739e;
+  color: white;
+  border-radius: 10px;
+  border: solid 2px #dadadaad;
+  margin: 5px;
+  padding: 12px 6px;
+}
