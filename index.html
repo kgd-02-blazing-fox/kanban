@@ -17,16 +17,21 @@
 
 <body>
   <div id="app">
+    <!-- ALERTS -->
+    <div class="alert alert-primary" role="alert" v-if="alertOn">
+      {{alertMsg}}
+    </div>
+
     <!-- ALREADY LOGIN -->
     <div v-if="isLogin">
       <!-- HEADER & LOGOUT -->
       <div class="header container-fluid">
         <div class=" nav row d-flex justify-content-between">
           <div>
-            <img src="assets/kanban.png" width="150px">
+            <img class="m-1" src="assets/kanban.png" width="150px">
           </div>
           <div id="logout">
-            <button class="btn">logout</button>
+            <button class="btn" @click="logout">logout</button>
           </div>
         </div>
       </div>
@@ -42,7 +47,7 @@
           </div>
           <div class="col row d-flex align-items-center">
             <div class="col-1 d-flex justify-content-end"><i class="fas fa-clock"></i></div>
-            <div class="col"><b>00:00</b></div>
+            <div class="col"><b>{{getTime}}</b></div>
             <div class="col-1 d-flex justify-content-end"><i class="fas fa-calendar-day"></i></div>
             <div class="col"><b>{{getDate}}</b></div>
           </div>
@@ -186,21 +191,23 @@
             </div>
             <div class="register container d-flex justify-content-center">
               <div class="col-lg">
+
                 <div>
-                  <form class="form-group" id="registerForm"><br>
+                  <form class="form-group" id="registerForm" @submit.prevent="register"><br>
                     <div>
                       <label for="registerName">name</label>
-                      <input class="form-control" type="text" placeholder="your name?" id="registerName" required>
+                      <input class="form-control" type="text" placeholder="your name?" v-model="registerName" required>
                       <br>
                     </div>
                     <div>
                       <label for="registerEmail">email</label>
-                      <input class="form-control" type="email" placeholder="your email?" id="registerEmail" required>
+                      <input class="form-control" type="email" placeholder="your email?" v-model="registerEmail"
+                        required>
                       <br>
                     </div>
                     <div>
                       <label for="registerOrganization">your organization</label>
-                      <select class="form-control" id="registerOrganization">
+                      <select class="form-control" v-model="registerOrganization">
                         <option value="" disabled selected>your oranization?</option>
                         <option value="Hacktiv8 Instructor">Hacktiv8 Instructor</option>
                         <option value="Hacktiv8 Student">Hacktiv8 Student</option>
@@ -211,7 +218,7 @@
                     <div>
                       <label for="registerPassword">Password</label>
                       <input class="form-control" type="password" placeholder="your super secret password"
-                        id="registerPassword" required>
+                        v-model="registerPassword" required>
                       <br>
                     </div>
                     <div>
@@ -236,16 +243,16 @@
             <div class="register container d-flex justify-content-center">
               <div class="col-lg">
                 <div>
-                  <form class="form-group" id="loginForm"><br>
+                  <form class="form-group" id="loginForm" @submit.prevent="login"><br>
                     <div>
                       <label for="loginEmail">Email</label>
-                      <input class="form-control" type="email" placeholder="your email?" id="loginEmail" required>
+                      <input class="form-control" type="email" placeholder="your email?" v-model="loginEmail" required>
                       <br>
                     </div>
                     <div>
                       <label for="loginPassword">Password</label>
                       <input class="form-control" type="password" placeholder="your super secret password"
-                        id="loginPassword" required>
+                        v-model="loginPassword" required>
                       <br>
                     </div>
                     <div>
