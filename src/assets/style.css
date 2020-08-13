@@ -1,0 +1,160 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+body{
+  background-image: url("./BG.jpg");
+  background-repeat: repeat;
+  background-size: cover;
+  background-color: #e84118;
+}
+
+.welcomeButton a{
+  font-size: 50px;
+  text-decoration: none;
+}
+
+.homelogin :hover{
+  color: white;
+  font-size: 75px;
+}
+.homeregister :hover{
+  color: white;
+  font-size: 75px;
+}
+
+.fas{
+  color: black;
+}
+
+.header{
+  background-color: #c8d6e5;
+  color: #dfe6e9;
+}
+
+.header .nav{
+  margin: 0;
+  padding: 3px;
+}
+
+.infos{
+  border-radius: 10px;
+  border: solid 1px #dadadaad;
+  background-color: #8395a79f;
+  color: #222f3e;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 6px 6px;
+}
+
+.register{
+  border-radius: 10px;
+  border: solid 2px #dadadaad;
+  background-color: #201f1dd3;
+}
+
+.formTitle{
+  color: white;
+}
+
+.register label{
+  color: white;
+}
+
+.addButton{
+  color: white;
+  padding: 3px;
+  border-radius: 10px;
+  margin-left: 60px;
+  word-spacing: 8px;
+  text-decoration: none;
+}
+.addButton a{
+  color: white;
+  text-decoration: none;
+}
+.addButton i{
+  color: white;
+  text-decoration: none;
+}
+
+.addButton :hover{
+  word-spacing: 8px;
+  padding: 5px 40px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.363);
+  color: black;
+  text-decoration: none;
+}
+
+.maincontent{
+  color: black;
+  font-weight: bold;
+}
+
+.content{
+  border-radius: 10px;
+  border: solid 1px #dadadaad;
+  background-color: #f5f6fa44;
+  margin: 5px 0px;
+  padding: 3px 2px;
+}
+
+.bodyContent :hover{
+  background-color: #5252526b;
+  color: white;
+}
+
+.content .user{
+  color: rgba(0, 0, 0, 0.541)
+}
+
+.bodyContent{
+  overflow-y: auto;
+  height: 60vh;
+  max-height: 60vh;
+}
+
+.backlog{
+  background-color: #075f7cde;
+  color: white;
+  border-radius: 10px;
+  border: solid 2px #dadadaad;
+  margin: 4px;
+  padding: 12px 6px;
+}
+.backlog .content .user{
+  color: rgba(255, 255, 255, 0.521);
+}
+
+.product{
+  background-color: #10ac85f3;
+  color: white;
+  border-radius: 10px;
+  border: solid 2px #dadadaad;
+  margin: 4px;
+  padding: 12px 6px;
+}
+
+.development{
+  background-color: #ff9e43d5;
+  color: white;
+  border-radius: 10px;
+  border: solid 2px #dadadaad;
+  margin: 4px;
+  padding: 12px 6px;
+}
+
+.done{
+  background-color: #aa3523d8;
+  color: white;
+  border-radius: 10px;
+  border: solid 2px #dadadaad;
+  margin: 4px;
+  padding: 12px 6px;
+}
+.done .content .user{
+  color: rgba(255, 255, 255, 0.534);
+}
