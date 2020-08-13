@@ -4,7 +4,7 @@
             <div class="row justify-content-center">
                 <div class="border col-md-5" style="padding: 30px; border-radius: 40px;">
                     <h2 class="justify-content-center text-center">Login to Kanban</h2><br>
-                    <form @submit.prevent="login">
+                    <form @submit.prevent="$_LoginPage_login">
                         <div class="form-group">
                             <label for="login-email">Email address</label>
                             <input type="email" class="form-control" v-model="email" placeholder="Johndoe@mail.com"
@@ -17,12 +17,12 @@
                         <div class="row"
                             style="display: flex; flex-direction: column; margin: auto; align-items: center;">
                             <button type="submit" class="btn btn-primary" style="width: 100px;">Login</button><br>
-                            <div class="g-signin2" id="google-signin-button"></div><br>
+                            <!-- <div class="g-signin2" id="google-signin-button"></div><br> -->
                         </div>
                     </form>
                     <div class="col-md-12 text-center">
-                        <p class="text-secondary">Doesn't have account yet? <span onclick=""
-                                class="text-primary" @click.prevent="signOut">Register</span></p>
+                        <p class="text-secondary">Doesn't have account yet? <span
+                                class="text-primary" @click.prevent="$_LoginPage_goToRegisterPage">Register</span></p>
                     </div>
                 </div>
             </div>
@@ -31,9 +31,10 @@
 </template>
 
 <script>
+
 import axios from "axios";
 export default {
-    name:"LoginForm",
+    name:"LoginPage",
     data() {
         return {
             email:"",
@@ -41,12 +42,15 @@ export default {
         }
     },
     mounted() {
-        gapi.signin2.render('google-signin-button', {
-        onsuccess: this.onSignIn
-        })
+        // setTimeout(()=>{      
+        //     gapi.signin2.render('google-signin-button', {
+        //     onsuccess: this.$_LoginPage_onSignIn
+        // })
+        // },100)
+        
     },
     methods:{
-        login() {
+        $_LoginPage_login() {
             axios({
                 method:"POST",
                 url:"http://localhost:3000/login",
@@ -57,34 +61,38 @@ export default {
             })
             .then(response=>{
                 localStorage.setItem("access_token",response.data.access_token)
-                //emit "refreshpage"
+                this.$emit("movePage","MainPage")
                 })
-            .catch(err=>console.log(err))
-        },
-        onSignIn(googleUser) {
-            const id_token = googleUser.getAuthResponse().id_token
-            axios({
-                method:"POST",
-                url:"http://localhost:3000/Glogin",
-                headers:{
-                    'google_token':id_token
-                }
-            })
-            .then(response=>{
-                localStorage.setItem("access_token",response.data.access_token)
-                //emit "refreshpage"
+            .catch(err=>{
+                console.log(err)  //change here
                 })
-            .catch(err=>console.log(err))
         },
-        registerPage() {
-            //move to register page here
-            //emit refresh page
-        },
-        signOut() {
-            localStorage.removeItem("access_token")
-            const auth2 = gapi.auth2.getAuthInstance();
-            auth2
-                .signOut()
+        // $_LoginPage_onSignIn(googleUser) {
+        //     const id_token = googleUser.getAuthResponse().id_token
+        //     axios({
+        //         method:"POST",
+        //         url:"http://localhost:3000/Glogin",
+        //         headers:{
+        //             'google_token':id_token
+        //         }
+        //     })
+        //     .then(response=>{
+        //         localStorage.setItem("access_token",response.data.access_token)
+        //         this.$emit("movePage","MainPage")
+        //         })
+        //     .catch(err=>{
+        //         console.log(err)  //change here
+        //         })
+        // },
+        $_LoginPage_goToRegisterPage() {
+            this.$emit("movePage","RegisterPage")
+        // $_LoginPage_signOut() {
+        //     localStorage.removeItem("access_token")
+        //     setTimeout(()=>{
+        //         const auth2 = gapi.auth2.getAuthInstance();
+        //         auth2
+        //             .signOut()
+        //     },100)
         }
     }
 }
