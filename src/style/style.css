@@ -48,3 +48,6 @@ body {
 #kanban-footer-attributions{
     font-size: 0.8em;
 }
+#errorMessage {
+    color:red
+}

@@ -16,8 +16,9 @@
                         </div>
                         <div class="row"
                             style="display: flex; flex-direction: column; margin: auto; align-items: center;">
+                            <p id="errorMessage" v-if="errorMessage">{{errorMessage}}</p>
                             <button type="submit" class="btn btn-primary" style="width: 100px;">Login</button><br>
-                            <!-- <div class="g-signin2" id="google-signin-button"></div><br> -->
+                            <GoogleLogin :params="params" :renderParams="renderParams" :onSuccess="$_LoginPage_onSignIn"></GoogleLogin> <br>
                         </div>
                     </form>
                     <div class="col-md-12 text-center">
@@ -33,27 +34,29 @@
 <script>
 
 import axios from "axios";
+import GoogleLogin from 'vue-google-login';
 export default {
     name:"LoginPage",
     data() {
         return {
             email:"",
-            password:""
+            password:"",
+            errorMessage:"",
+            params: {
+                client_id: "124739969343-r3avc3i2o4poa4ttkh439jhcedgjik59.apps.googleusercontent.com"
+            },
+            renderParams: {
+                width: 150,
+                height: 30,
+                longtitle: true
+            },
         }
-    },
-    mounted() {
-        // setTimeout(()=>{      
-        //     gapi.signin2.render('google-signin-button', {
-        //     onsuccess: this.$_LoginPage_onSignIn
-        // })
-        // },100)
-        
     },
     methods:{
         $_LoginPage_login() {
             axios({
                 method:"POST",
-                url:"http://localhost:3000/login",
+                url:"https://kanban-laurentius-server.herokuapp.com/login",
                 data:{
                     email:this.email,
                     password:this.password,
@@ -62,42 +65,38 @@ export default {
             .then(response=>{
                 localStorage.setItem("access_token",response.data.access_token)
                 this.$emit("movePage","MainPage")
+            })
+            .catch(err=>{
+                this.errorMessage = err.response.data.message
+            })
+        },
+        $_LoginPage_onSignIn(googleUser) {
+            const id_token = googleUser.getAuthResponse().id_token
+            axios({
+                method:"POST",
+                url:"https://kanban-laurentius-server.herokuapp.com/Glogin",
+                headers:{
+                    'google_token':id_token
+                }
+            })
+            .then(response=>{
+                localStorage.setItem("access_token",response.data.access_token)
+                this.$emit("movePage","MainPage")
                 })
             .catch(err=>{
-                console.log(err)  //change here
+                this.errorMessage = err.response.data.message
                 })
         },
-        // $_LoginPage_onSignIn(googleUser) {
-        //     const id_token = googleUser.getAuthResponse().id_token
-        //     axios({
-        //         method:"POST",
-        //         url:"http://localhost:3000/Glogin",
-        //         headers:{
-        //             'google_token':id_token
-        //         }
-        //     })
-        //     .then(response=>{
-        //         localStorage.setItem("access_token",response.data.access_token)
-        //         this.$emit("movePage","MainPage")
-        //         })
-        //     .catch(err=>{
-        //         console.log(err)  //change here
-        //         })
-        // },
         $_LoginPage_goToRegisterPage() {
             this.$emit("movePage","RegisterPage")
-        // $_LoginPage_signOut() {
-        //     localStorage.removeItem("access_token")
-        //     setTimeout(()=>{
-        //         const auth2 = gapi.auth2.getAuthInstance();
-        //         auth2
-        //             .signOut()
-        //     },100)
         }
+    }, 
+    components: {
+        GoogleLogin
     }
 }
 </script>
 
-<style>
-
+<style scoped>
+    
 </style>

@@ -7,8 +7,9 @@
         </div>
             
             <form action="" @submit.prevent="$_KanbanCards_edit(id)" v-if="formEditStatus">
-                    <input id="form-edit-title" type="text" v-model="titleEdit" required> <br>
-                    <input type="textarea" v-model="descriptionEdit" row="10" cols="50"> <br> <br>
+                    <input id="form-edit-title" type="text" v-model="titleEdit"> <br>
+                    <input type="textarea" v-model="descriptionEdit" row="10" cols="50"> <br> <br v-if="!errorMessage">
+                    <span id="errorMessage" v-if="errorMessage">{{errorMessage}}<br></span>
                     <button class="button-edit"><img src="../assets/confirm.png"></button>
                     <img src="../assets/cancel.png" @click.prevent="toggleEdit">
             </form>
@@ -27,6 +28,7 @@
 
 <script>
 import axios from "axios"
+import plus from "../assets/plus.png"
 export default {
     props:["id","title","description","user","createdAt","category","categories"],
     data() {
@@ -34,7 +36,8 @@ export default {
             titleEdit:"",
             descriptionEdit:"",
             formEditStatus:false,
-            plusicon:require("../assets/plus.png")
+            plusicon:plus,
+            errorMessage:""
         }
     },
     methods:{
@@ -49,10 +52,9 @@ export default {
             }
         },
         $_KanbanCards_edit(id) {
-            if (confirm(`Are you sure you want to update "${this.title}"?`)) {
-                axios({
+            axios({
                 method:"PUT",
-                url:`http://localhost:3000/tasks/${id}`,
+                url:`https://kanban-laurentius-server.herokuapp.com/tasks/${id}`,
                 data:{
                     title:this.titleEdit,
                     description:this.descriptionEdit
@@ -66,15 +68,16 @@ export default {
                 this.toggleEdit()
             })
             .catch(err=>{
-                console.log(err)
+                this.errorMessage = err.response.data.message
+                setTimeout(()=>this.errorMessage="",3000)
             })
-            }
+            
         },
         $_KanbanCards_delete(id) {
             if (confirm(`Are you sure you want to delete "${this.title}"?`)) {
                 axios({
                 method:"DELETE",
-                url:`http://localhost:3000/tasks/${id}`,
+                url:`https://kanban-laurentius-server.herokuapp.com/tasks/${id}`,
                 headers:{
                     "access_token":localStorage.getItem("access_token")
                 }
@@ -94,7 +97,7 @@ export default {
             // // else    //implement drag here
             axios({
                 method:"PATCH",
-                url:`http://localhost:3000/tasks/${id}`,
+                url:`https://kanban-laurentius-server.herokuapp.com/tasks/${id}`,
                 data:{
                     category
                 },

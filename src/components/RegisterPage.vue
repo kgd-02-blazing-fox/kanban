@@ -24,6 +24,7 @@
                                 <input type="organization" class="form-control" id="register-organization" v-model="organization">
                             </div>
                             <div style="text-align: center;">
+                                <p id="errorMessage" v-if="errorMessage">{{errorMessage}}</p>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
@@ -48,13 +49,14 @@ export default {
             email:"",
             password:"",
             organization:"Hacktiv8",
+            errorMessage:""
         }
     },
     methods:{
         $_RegisterPage_register() {
             axios({
                 method:"POST",
-                url:"http://localhost:3000/register",
+                url:"https://kanban-laurentius-server.herokuapp.com/register",
                 data:{
                     name:this.name,
                     email:this.email,
@@ -67,7 +69,7 @@ export default {
                 this.$emit("movePage","MainPage")
             })
             .catch(err=>{
-                console.log(err.response.data)
+                this.errorMessage = err.response.data.message
             })
         },
         $_RegisterPage_goToLoginPage() {

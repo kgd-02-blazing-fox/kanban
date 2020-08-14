@@ -5,26 +5,30 @@
             <div class="card-header kanban-card-header bg-transparent kanban-card-border-bottom mh-100">{{category}}</div>
             <div class="card-body kanban-card-content p-0">
                 <!-- KANBAN CARDS START/END HERE -->
+
                 <KanbanCards 
-                v-for="task in $_KanbanCategories_filterByCategories"
-                :key="task.id"
-                :category="category"
-                :categories="categories"
-                :id="task.id"
-                :title="task.title"
-                :description="task.description"
-                :user="task.User.name"
-                :createdAt="task.createdAt"
-                @refetchTasks="emitRefetchTasks"
+                    v-for="task in $_KanbanCategories_filterByCategories"
+                    :key="task.id"
+                    :category="category"
+                    :categories="categories"
+                    :id="task.id"
+                    :title="task.title"
+                    :description="task.description"
+                    :user="task.User.name"
+                    :createdAt="task.createdAt"
+                    @refetchTasks="emitRefetchTasks"
                 >
                 </KanbanCards>
+
             </div>
             <div class="card-footer bg-transparent kanban-card-border-top">
                 <span class="float-right"><img :src="plusicon" @click.prevent="toggleAdd"></span>
                 <form action="" @submit.prevent="$_KanbanCategories_addTask" v-if="formAddStatus">
-                    <input id="form-add-title" type="text" v-model="titleAdd" placeholder="Title" required> <br>
+                    <input id="form-add-title" type="text" v-model="titleAdd" placeholder="Title"> <br>
                     <input type="textarea" v-model="descriptionAdd" placeholder="Description">
                     <button class="float-right button-add"><img src="../assets/confirm.png"></button>
+                    <br> <br v-if="!errorMessage">
+                    <span id="errorMessage" v-if="errorMessage">{{errorMessage}}</span>
                 </form>
             </div>
         </div>
@@ -33,8 +37,12 @@
 </template>
 
 <script>
+import draggable from "vuedraggable"
 import KanbanCards from "../components/KanbanCards.vue"
 import axios from "axios"
+import plus from "../assets/plus.png"
+import cancel from "../assets/cancel.png"
+
 export default {
     name:"KanbanCategories",
     props:["category","tasks","categories"],
@@ -43,14 +51,15 @@ export default {
             titleAdd:"",
             descriptionAdd:"",
             formAddStatus:false,
-            plusicon:require("../assets/plus.png")
+            plusicon:plus,
+            errorMessage:""
         }
     },
     methods:{
         toggleAdd() {
             this.formAddStatus = !this.formAddStatus
-            if (this.formAddStatus) this.plusicon=require("../assets/cancel.png")
-            else this.plusicon=require("../assets/plus.png")
+            if (this.formAddStatus) this.plusicon=cancel
+            else this.plusicon=plus
         },
         emitRefetchTasks() {
             this.$emit("refetchTasks")
@@ -58,7 +67,7 @@ export default {
         $_KanbanCategories_addTask() {
             axios({
                 method:"POST",
-                url:"http://localhost:3000/tasks",
+                url:"https://kanban-laurentius-server.herokuapp.com/tasks",
                 data:{
                     title:this.titleAdd,
                     description:this.descriptionAdd,
@@ -73,10 +82,11 @@ export default {
                 this.formAddStatus=false
                 this.titleAdd=""
                 this.descriptionAdd=""
-                this.plusicon=require("../assets/plus.png")
+                this.plusicon=plus
             })
             .catch(err=>{
-                console.log(err)
+                this.errorMessage = err.response.data.message
+                setTimeout(()=>this.errorMessage="",3000)
             })
         }
     },
@@ -86,7 +96,8 @@ export default {
         }
     },
     components:{
-        KanbanCards
+        KanbanCards,
+        draggable
     }
 }
 </script>

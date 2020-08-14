@@ -9,11 +9,10 @@
                     <div class="justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                        <a class="nav-link disabled" id="nav-home">Hello Laurentius</a>
+                        <a class="nav-link disabled" id="nav-home">Hello {{userName}} @ {{userOrganization}}</a>
                         </li>
                         <li class="nav-item text-right">
                             <a class="nav-link" id="kanban-nav-logout" @click="$_MainPage_logout">Logout</a>
-                             <a class="nav-link" id="kanban-nav-organization">Organizations</a>
                         </li>
                     </ul>
                     </div>
@@ -25,12 +24,12 @@
             <div class="row " style="min-height: 75vh;">
                 <!--KANBAN CATEGORIES START/END HERE-->
                 <KanbanCategories 
-                v-for="category in categories" 
-                :key="categories.indexOf(category)" 
-                :category="category"
-                :categories="categories"
-                :tasks="tasks"
-                @refetchTasks="$_MainPage_fetchTask"
+                    v-for="(category,index) in categories" 
+                    :key="index" 
+                    :category="category"
+                    :categories="categories"
+                    :tasks="tasks"
+                    @refetchTasks="$_MainPage_fetchTask"
                 >
                 </KanbanCategories>
             </div>
@@ -56,20 +55,42 @@
 <script>
 import axios from "axios"
 import KanbanCategories from "../components/KanbanCategories.vue"
+import GoogleLogin from 'vue-google-login';
 export default {
     name:"MainPage",
     data() {
         return {
             categories: ["backlog", "to-do", "reviewed", "done"],
             tasks:[],
+            userName:"",
+            userOrganization:""
         }
     },
     methods:{
+        $_MainPage_fetchUser() {
+            if (localStorage.getItem("access_token")) {
+               axios({
+                method:"GET",
+                url:"https://kanban-laurentius-server.herokuapp.com/user",
+                headers:{
+                    "access_token":localStorage.getItem("access_token")
+                    }
+                })
+                .then(response=>{
+                    this.userName = response.data.name
+                    this.userEmail = response.data.email
+                    this.userOrganization = response.data.organization
+                })
+                .catch(err=>{
+                    console.log(err)
+                }) 
+            }
+        },
         $_MainPage_fetchTask() {
             if (localStorage.getItem("access_token")) {
                axios({
                 method:"GET",
-                url:"http://localhost:3000/tasks",
+                url:"https://kanban-laurentius-server.herokuapp.com/tasks",
                 headers:{
                     "access_token":localStorage.getItem("access_token")
                     }
@@ -85,11 +106,9 @@ export default {
         $_MainPage_logout() {
             localStorage.removeItem("access_token")
             this.$emit("movePage","LoginPage")
-            // setTimeout(()=>{
-            //     const auth2 = gapi.auth2.getAuthInstance();
-            //         auth2
-            //         .signOut()
-            // },100)
+            const auth2 = gapi.auth2.getAuthInstance();
+            auth2
+                .signOut()
         },
     },
     components:{
@@ -97,6 +116,7 @@ export default {
     },
     created() {
         this.$_MainPage_fetchTask()
+        this.$_MainPage_fetchUser()
     }
 }
 </script>
