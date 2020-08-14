@@ -38,12 +38,18 @@ export default {
     };
   },
   methods: {
-    getTask(id) {},
-    deleteTask(id) {},
+    getTask(id) {
+      this.$emit("gettingTask", id);
+    },
+    deleteTask(id) {
+      this.$emit("deletingTask", id);
+    },
   },
   computed: {
     filteredTask() {
-      return this.taskProduct.filter(taskProduct => taskProduct.status.includes("product"));
+      return this.taskProduct.filter((taskProduct) =>
+        taskProduct.status.includes("product")
+      );
     },
   },
 };

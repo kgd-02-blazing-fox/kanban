@@ -1,58 +1,64 @@
 <template>
-  <div class="backlog container col-sm-5 col-md-5 col-lg-4 col-xl">
+  <div :class=" `${name} container col-sm-5 col-md-5 col-lg-4 col-xl ` ">
     <div class="d-flex justify-content-center">
-      <div>BACKLOG</div>
+      <div>{{name}}</div>
     </div>
     <div>
       <div class="bodyContent" id="backlogContent">
-        <div class="content container-lg-12" v-for=" task in filteredTask" :key="task.id">
-          <div class="user container-fluid d-flex justify-content-between">
-            {{task.user}}
-            <div>
-              <a href="#" @click="getTask(task.id)">
-                <i class="fas fa-pen-square"></i>
-              </a>
-              <a href="#" @click="deleteTask(task.id)">
-                <i class="fas fa-trash-alt"></i>
-              </a>
-            </div>
-          </div>
-          <div class="maincontent container-fluid">{{task.content}}</div>
-          <div class="container-fluid d-flex justify-content-end">
-            <a href="#">
-              <i class="fas fa-arrow-alt-circle-right"></i>
-            </a>
-          </div>
-        </div>
+        <TaskCard
+          v-for="task in filteredTask"
+          :key="task.id"
+          :task="task"
+        ></TaskCard>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import TaskCard from "./TaskCard"
 export default {
   name: "TaskBacklog",
-  props: ["unfilteredTask"],
+  props: ["unfilteredTask", "name"],
+  components: {TaskCard},
   data() {
-    return {
-      taskBacklog: this.unfilteredTask,
-    };
+    return {};
   },
-  methods:{
-    getTask(id){
-
+  methods: {
+    getTask(id) {
+      this.$emit("gettingTask", id);
     },
-    deleteTask(id){
-
-    }
+    deleteTask(id) {
+      this.$emit("deletingTask", id);
+    },
+    updateStatusToProduct(id) {
+      const status = {
+        status: "product",
+        id,
+      };
+      this.$emit("updateStatusTask", status);
+    },
   },
   computed: {
     filteredTask() {
-      return this.taskBacklog.filter(taskBacklog => taskBacklog.status.includes("backlog"));
+      return this.unfilteredTask.filter(
+        (unfilteredTask) => unfilteredTask.status === this.name
+      );
+    },
+    getColor() {
+      if (this.name === "backlog") {
+        return "bg-primary";
+      } else if (this.name === "development") {
+        return "bg-warning";
+      } else if (this.name === "product") {
+        return "bg-secondary";
+      } else if (this.name === "done") {
+        return "bg-success";
+      }
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
 </style>

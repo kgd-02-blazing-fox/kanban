@@ -6,6 +6,9 @@
       :allOrganizationTask="allOrganizationTask"
       @newTaskAdded="refreshTask"
       @newTaskFailedAdded="addTaskFail"
+      @taskDelete="taskDeletedeSuccess"
+      @deleteTaskFail="taskDeleteFail"
+      @updateTaskStatus="statusUpdate"
     ></TaskBoard>
   </div>
 </template>
@@ -27,9 +30,19 @@ export default {
     refreshTask(msg) {
       this.$emit("refreshTasks", msg);
     },
-    addTaskFail(data){
-      this.$emit("failAddTask", data)
-    }
+    addTaskFail(data) {
+      this.$emit("failAddTask", data);
+    },
+    taskDeletedeSuccess(data) {
+      this.$emit("deleteTasksucceeded", data);
+    },
+    taskDeleteFail(data) {
+      this.$emit("deleteTaskFailed", data);
+    },
+    statusUpdate(data) {
+      console.log("BISA KE UPDATE DI DASHBOARD");
+      this.$emit("newTaskStatus", data);
+    },
   },
   components: {
     Infos,

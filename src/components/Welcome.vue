@@ -1,24 +1,25 @@
 <template>
   <div>
-    <div class="welcome container m-5">
-      <div class="d-flex justify-content-between">
-        <div class="container">
-          <img class="img-responsive" src="../assets/home.svg" alt="WELCOME" width="800px" />
-        </div>
-        <div class="container col m-3 p-1">
-          <div class="container-fluid col mt-5">
-            <div class="kanban welcomeButton h-50 w-75">
-              <a>KANBAN!</a>
+    <div class="welcome container d-flex justify-content-center">
+      <div class="">
+        <div class="container ">
+          <div class="container-fluid col">
+            <div class="kanban welcomeButton d-flex justify-content-center">
+              <img class="img-responsive " src="../assets/KANBAN.png" alt="KANBAN" >
             </div>
           </div>
           <div class="container col">
-            <div class="welcomeButton homelogin">
-              <a @click="toLogin" class="formTitle">LOGIN</a>
+            <div class="welcomeButton homelogin d-flex justify-content-center">
+              <a @click="toLogin" class="formTitle">
+                <img class="homeimg-responsive" src="../assets/login.png" alt="KANBAN">
+              </a>
             </div>
           </div>
           <div class="container col">
-            <div class="welcomeButton homeregister">
-              <a @click="toRegister" class="formTitle">REGISTER</a>
+            <div class="welcomeButton homeregister d-flex justify-content-center">
+              <a @click="toRegister" class="formTitle">
+                <img class="homeimg-responsive" src="../assets/register.png" alt="REGISTER">
+              </a>
             </div>
           </div>
         </div>
@@ -34,12 +35,12 @@ export default {
     return {};
   },
   methods: {
-    toLogin(){
-      this.$emit("showLogin")
+    toLogin() {
+      this.$emit("showLogin");
     },
-    toRegister(){
-      this.$emit("showRegister")
-    }
+    toRegister() {
+      this.$emit("showRegister");
+    },
   },
   created() {
     console.log("WELCOME PAGE MOUNTED!");

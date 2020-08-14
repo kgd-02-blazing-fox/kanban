@@ -28,20 +28,20 @@ export default {
   props: ["unfilteredTask"],
   data() {
     return {
-      taskDone: this.unfilteredTask,
+
     };
   },
   methods:{
-    getTask(id){
-
+    getTask(id) {
+      this.$emit("gettingTask", id);
     },
-    deleteTask(id){
-
-    }
+    deleteTask(id) {
+      this.$emit("deletingTask", id);
+    },
   },
   computed: {
     filteredTask() {
-      return this.taskDone.filter(taskDone => taskDone.status.includes("done"));
+      return this.unfilteredTask.filter(unfilteredTask => unfilteredTask.status === "done");
     },
   },
 };

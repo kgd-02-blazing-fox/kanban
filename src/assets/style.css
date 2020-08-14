@@ -5,24 +5,36 @@
 }
 
 body{
+  background-image: url("./home.svg");
   background-image: url("./BG.jpg");
   background-repeat: repeat;
   background-size: cover;
   background-color: #e84118;
 }
 
-.welcomeButton a{
-  font-size: 50px;
+.homeimg {
+  max-width: 100%;
+  height: auto;
+}
+
+.welcomeButton{
   text-decoration: none;
 }
 
+img .welcomeButton .homelogin{
+  size: 10%;
+}
 .homelogin :hover{
-  color: white;
-  font-size: 75px;
+  padding: 20px;
+  background-color: rgba(0, 102, 133, 0.473);
+}
+.welcomeButton .homeregister{
+  margin-top: 30px;
+  width: 50%;
 }
 .homeregister :hover{
-  color: white;
-  font-size: 75px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.473);
 }
 
 .fas{

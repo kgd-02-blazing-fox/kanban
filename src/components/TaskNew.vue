@@ -23,7 +23,7 @@
                 </div>
                 <div>
                   <label for="newStatus">task status</label>
-                  <select class="form-control" v-model="newStatus">
+                  <select class="form-control" v-model="newStatus" required>
                     <option value disabled selected>the task status</option>
                     <option value="backlog">Backlog</option>
                     <option value="product">Product</option>
@@ -70,7 +70,7 @@ export default {
         },
       })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           const payload = {
             alertMsg: "Task Added",
           };

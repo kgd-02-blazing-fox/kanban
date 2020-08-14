@@ -14,10 +14,15 @@
       </div>
       <div class="d-flex justify-content-center">
         <div class="appbody row container-fluid" id="kanbanBody">
-          <TaskBacklog :unfilteredTask="allOrganizationTask"></TaskBacklog>
-          <TaskProduct :unfilteredTask="allOrganizationTask"></TaskProduct>
-          <TaskDevelopment :unfilteredTask="allOrganizationTask"></TaskDevelopment>
-          <TaskDone :unfilteredTask="allOrganizationTask"></TaskDone>
+          <TaskBacklog
+            v-for="stat in status"
+            :key="stat"
+            :unfilteredTask="allOrganizationTask"
+            :name="stat"
+            @gettingTask="getTaskToEdit"
+            @deletingTask="deleteTask"
+            @updateStatusTask="updateTaskStatus"
+          ></TaskBacklog>
         </div>
       </div>
     </div>
@@ -25,6 +30,7 @@
 </template>
 
 <script>
+import KanbanAPI from "../config/KanbanAPI";
 import TaskBacklog from "./TaskBacklog";
 import TaskProduct from "./TaskProduct";
 import TaskDevelopment from "./TaskDevelopment";
@@ -36,9 +42,62 @@ export default {
   data() {
     return {
       showAddForm: false,
+      status: ["backlog", "development", "product", "done"],
     };
   },
   methods: {
+    deleteTask(id) {
+      KanbanAPI({
+        method: "DELETE",
+        url: `tasks/${id}`,
+        headers: {
+          access_token: localStorage.getItem("access_token"),
+        },
+      })
+        .then((response) => {
+          const payload = {
+            alertMsg: "Task Deleted",
+          };
+          this.$emit("taskDelete", payload);
+        })
+        .catch((err) => {
+          const payload = {
+            alertMsg: "Cannot delete task",
+          };
+          this.$emit("deleteTaskFail", payload);
+        });
+    },
+    getTaskToEdit(id) {
+      console.log(id);
+    },
+    editTaskUpdated(data) {
+      console.log(data);
+    },
+    updateTaskStatus(data) {
+      KanbanAPI({
+        method: "PUT",
+        url: `tasks/status/${data.id}`,
+        headers: {
+          access_token: localStorage.getItem("access_token"),
+        },
+        data: {
+          status: data.status,
+        },
+      })
+        .then((response) => {
+          console.log("BISA KE UPDATE DI TASKBOARD");
+          const payload = {
+            alertMsg: `Task Status Updated!`,
+          };
+          this.$("updateTaskStatus", payload);
+        })
+        .catch((err) => {
+          const payload = {
+            alertMsg: `Failed To Updated Task Status!`,
+          };
+          this.$("updateFailed", payload);
+        });
+    },
     addTask() {
       this.showAddForm = true;
     },

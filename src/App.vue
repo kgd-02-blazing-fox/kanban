@@ -9,8 +9,11 @@
       :UserName="name"
       :UserOrganization="organization"
       @userLoggedOut="logoutClear"
-      @refreshTasks="newTaskOnList"
       @failAddTask="registrationStatus"
+      @deleteTaskFailed="registrationStatus"
+      @deleteTasksucceeded="newTaskOnList"
+      @refreshTasks="newTaskOnList"
+      
     ></Dashboard>
     <FrontPage
       v-else
@@ -42,6 +45,7 @@ export default {
   },
   methods: {
     fetchOrganizationTask() {
+      let count = 0
       KanbanAPI({
         method: "GET",
         url: "tasks",
@@ -56,7 +60,7 @@ export default {
           console.log(err);
         })
         .finally((_) => {
-          console.log("TASK FETCHED");
+          // console.log("FETCHED");
         });
     },
     loginSuccess(data) {
@@ -70,7 +74,8 @@ export default {
         this.alertMsg = "";
       }, 3000);
     },
-    newTaskOnList(data){
+    newTaskOnList(data) {
+      console.log("TESSS");
       this.fetchOrganizationTask();
       this.alertOn = true;
       this.alertMsg = data.alertMsg;
@@ -110,7 +115,7 @@ export default {
     } else {
       console.log("YOU ARE NOT LOGIN");
     }
-  },
+  }
 };
 </script>
 
