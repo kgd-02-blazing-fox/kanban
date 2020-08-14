@@ -9,6 +9,7 @@
       @taskDelete="taskDeletedeSuccess"
       @deleteTaskFail="taskDeleteFail"
       @updateTaskStatus="statusUpdate"
+      @updateTaskStatusFailed="updateFailed"
     ></TaskBoard>
   </div>
 </template>
@@ -40,9 +41,11 @@ export default {
       this.$emit("deleteTaskFailed", data);
     },
     statusUpdate(data) {
-      console.log("BISA KE UPDATE DI DASHBOARD");
       this.$emit("newTaskStatus", data);
     },
+    updateFailed(data){
+      this.$emit("updateFailed", data)
+    }
   },
   components: {
     Infos,

@@ -20,6 +20,8 @@ export default {
   methods:{
     logout(){
       localStorage.removeItem("access_token");
+      localStorage.removeItem("name"),
+      localStorage.removeItem("organization"),
       this.$emit("userLogout")
     }
   }

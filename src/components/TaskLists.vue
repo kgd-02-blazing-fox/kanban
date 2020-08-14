@@ -9,6 +9,10 @@
           v-for="task in filteredTask"
           :key="task.id"
           :task="task"
+          :name="name"
+          @gettingTask="getTask"
+          @deletingTask="deleteTask"
+          @updateStatusTask="updateStatusTask"
         ></TaskCard>
       </div>
     </div>
@@ -16,11 +20,11 @@
 </template>
 
 <script>
-import TaskCard from "./TaskCard"
+import TaskCard from "./TaskCard";
 export default {
-  name: "TaskBacklog",
+  name: "TaskLists",
   props: ["unfilteredTask", "name"],
-  components: {TaskCard},
+  components: { TaskCard },
   data() {
     return {};
   },
@@ -31,11 +35,7 @@ export default {
     deleteTask(id) {
       this.$emit("deletingTask", id);
     },
-    updateStatusToProduct(id) {
-      const status = {
-        status: "product",
-        id,
-      };
+    updateStatusTask(status) {
       this.$emit("updateStatusTask", status);
     },
   },

@@ -1,12 +1,17 @@
 <template>
   <div>
+    <TaskEdit
+      v-if="taskBoardPosition === 'TaskEdit' "
+      :spesificTaskData="spesificTaskData"
+      @cancelAdd="backTaskBoard"
+    ></TaskEdit>
     <TaskNew
-      v-if="showAddForm"
+      v-if="taskBoardPosition === 'TaskNew' "
       @cancelAdd="backTaskBoard"
       @succesAddTask="taskAdded"
       @failedAddTask="taskFailedToAdd"
     ></TaskNew>
-    <div v-else>
+    <div v-if="taskBoardPosition === 'MainBoard' ">
       <div class="addButton container-md">
         <a href="#" @click="addTask">
           <i class="fas fa-plus-square"></i> POST KANBAN!
@@ -14,7 +19,7 @@
       </div>
       <div class="d-flex justify-content-center">
         <div class="appbody row container-fluid" id="kanbanBody">
-          <TaskBacklog
+          <TaskLists
             v-for="stat in status"
             :key="stat"
             :unfilteredTask="allOrganizationTask"
@@ -22,7 +27,7 @@
             @gettingTask="getTaskToEdit"
             @deletingTask="deleteTask"
             @updateStatusTask="updateTaskStatus"
-          ></TaskBacklog>
+          ></TaskLists>
         </div>
       </div>
     </div>
@@ -31,17 +36,17 @@
 
 <script>
 import KanbanAPI from "../config/KanbanAPI";
-import TaskBacklog from "./TaskBacklog";
-import TaskProduct from "./TaskProduct";
-import TaskDevelopment from "./TaskDevelopment";
-import TaskDone from "./TaskDone";
+import TaskLists from "./TaskLists";
 import TaskNew from "./TaskNew";
+import TaskEdit from "./TaskEdit";
 
 export default {
   name: "TaskBoard",
   data() {
     return {
+      taskBoardPosition: "MainBoard",
       showAddForm: false,
+      spesificTaskData: {},
       status: ["backlog", "development", "product", "done"],
     };
   },
@@ -68,7 +73,22 @@ export default {
         });
     },
     getTaskToEdit(id) {
+      this.taskBoardPosition = "TaskEdit";
       console.log(id);
+      KanbanAPI({
+        method: "GET",
+        url: `tasks/${id}`,
+        headers: {
+          access_token: localStorage.getItem("access_token"),
+        },
+      })
+        .then(({ data }) => {
+          this.spesificTaskData = data;
+          console.log(this.spesificTaskData);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     editTaskUpdated(data) {
       console.log(data);
@@ -81,44 +101,41 @@ export default {
           access_token: localStorage.getItem("access_token"),
         },
         data: {
-          status: data.status,
+          status: data.newStatus,
         },
       })
         .then((response) => {
-          console.log("BISA KE UPDATE DI TASKBOARD");
           const payload = {
             alertMsg: `Task Status Updated!`,
           };
-          this.$("updateTaskStatus", payload);
+          this.$emit("updateTaskStatus", payload);
         })
         .catch((err) => {
-          const payload = {
-            alertMsg: `Failed To Updated Task Status!`,
+          const data = {
+            alertMsg: `You Only Allowed To Updated Your Task Status!`,
           };
-          this.$("updateFailed", payload);
+          this.$emit("updateTaskStatusFailed", data);
         });
     },
     addTask() {
-      this.showAddForm = true;
+      this.taskBoardPosition = "TaskNew";
     },
     backTaskBoard() {
-      this.showAddForm = false;
+      this.taskBoardPosition = "MainBoard";
     },
     taskAdded(data) {
-      this.showAddForm = false;
+      this.taskBoardPosition = "MainBoard";
       this.$emit("newTaskAdded", data);
     },
     taskFailedToAdd(data) {
-      this.showAddForm = false;
+      this.taskBoardPosition = "MainBoard";
       this.$emit("newTaskFailedAdded", data);
     },
   },
   components: {
-    TaskBacklog,
-    TaskProduct,
-    TaskDevelopment,
-    TaskDone,
+    TaskLists,
     TaskNew,
+    TaskEdit,
   },
   props: ["allOrganizationTask"],
 };

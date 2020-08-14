@@ -37,10 +37,13 @@
 export default {
   name: "Infos",
   data() {
-    return {};
+    return {
+      UserName: localStorage.getItem("name"),
+      UserOrganization: localStorage.getItem("organization"),
+    };
   },
   methods: {},
-  props:["UserName", "UserOrganization"],
+  props:[],
   computed: {
     getDate() {
       let day;

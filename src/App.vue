@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-if="alertOn">
-      <div class="alert alert-primary" role="alert">{{alertMsg}}</div>
+    <div class="container mx-auto align-items-center" v-if="alertOn">
+      <div class="alert mt-2 ml-5 alert-warning position-absolute" role="alert">{{alertMsg}}</div>
     </div>
     <Dashboard
       v-if="isLogin"
@@ -13,7 +13,8 @@
       @deleteTaskFailed="registrationStatus"
       @deleteTasksucceeded="newTaskOnList"
       @refreshTasks="newTaskOnList"
-      
+      @newTaskStatus="newTaskOnList"
+      @updateFailed="registrationStatus"
     ></Dashboard>
     <FrontPage
       v-else
@@ -45,7 +46,7 @@ export default {
   },
   methods: {
     fetchOrganizationTask() {
-      let count = 0
+      let count = 0;
       KanbanAPI({
         method: "GET",
         url: "tasks",
@@ -60,12 +61,12 @@ export default {
           console.log(err);
         })
         .finally((_) => {
-          // console.log("FETCHED");
+          console.log("FETCHED TASKS");
         });
     },
     loginSuccess(data) {
-      this.name = data.name;
-      this.organization = data.organization;
+      localStorage.setItem("name", data.name);
+      localStorage.setItem("organization", data.organization);
       this.alertMsg = data.alertMsg;
       this.isLogin = true;
       this.alertOn = true;
@@ -75,7 +76,6 @@ export default {
       }, 3000);
     },
     newTaskOnList(data) {
-      console.log("TESSS");
       this.fetchOrganizationTask();
       this.alertOn = true;
       this.alertMsg = data.alertMsg;
@@ -115,7 +115,7 @@ export default {
     } else {
       console.log("YOU ARE NOT LOGIN");
     }
-  }
+  },
 };
 </script>
 
