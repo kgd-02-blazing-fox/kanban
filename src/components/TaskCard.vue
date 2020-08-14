@@ -44,10 +44,7 @@ export default {
       this.$emit("gettingTask", id);
     },
     deleteTask(id) {
-      confirm("ARE YOU SURE")
-      if(true){
-        this.$emit("deletingTask", id);
-      }
+      this.$emit("deletingTask", id);
     },
     updateStatusToLeft(id, status) {
       let newStatus;

@@ -19,6 +19,7 @@
     <FrontPage
       v-else
       @loginSucceeded="loginSuccess"
+      @googleLoginSucceeded="loginSuccess"
       @loginFailed="registrationStatus"
       @registrationSucceeded="registrationStatus"
       @registrationFailed="registrationStatus"
@@ -46,6 +47,7 @@ export default {
   },
   methods: {
     fetchOrganizationTask() {
+      console.log("KE FETCH");
       let count = 0;
       KanbanAPI({
         method: "GET",
@@ -65,12 +67,13 @@ export default {
         });
     },
     loginSuccess(data) {
-      localStorage.setItem("name", data.name);
       localStorage.setItem("organization", data.organization);
+      localStorage.setItem("name", data.name);
       this.alertMsg = data.alertMsg;
       this.isLogin = true;
       this.alertOn = true;
       setTimeout((_) => {
+        this.fetchOrganizationTask();
         this.alertOn = false;
         this.alertMsg = "";
       }, 3000);
@@ -82,7 +85,7 @@ export default {
       setTimeout((_) => {
         this.alertOn = false;
         this.alertMsg = "";
-      }, 3000);
+      }, 5000);
     },
     registrationStatus(data) {
       this.alertOn = true;

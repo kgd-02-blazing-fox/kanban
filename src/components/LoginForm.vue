@@ -35,15 +35,13 @@
                 <div>
                   <button type="submit" class="btn btn-warning">Submit</button>
                   <button @click="backWelcome" class="btn btn-warning">Cancel</button>
-                  <GoogleLogin
-                    :params="params"
-                    :renderParams="renderParams"
-                    :onSuccess="onSuccess"
-                  ></GoogleLogin>
                 </div>
               </form>
             </div>
           </div>
+        </div>
+        <div class="col mt-3">
+          <GoogleLogin :params="params" :renderParams="renderParams" :onSuccess="onSuccess"></GoogleLogin>
         </div>
       </div>
     </div>
@@ -64,7 +62,6 @@ export default {
         client_id:
           "722681282902-tr36pll0jrmvharg2o98uc64joqhegvs.apps.googleusercontent.com",
       },
-
       renderParams: {
         width: 250,
         height: 50,
@@ -105,10 +102,36 @@ export default {
         });
     },
     onSuccess(googleUser) {
-      console.log(googleUser);
-
-      // This only gets the user information: id, name, imageUrl and email
-      console.log(googleUser.getBasicProfile());
+      const name = googleUser.Pt.Cd;
+      const email = googleUser.Pt.zu;
+      KanbanAPI({
+        method: "POST",
+        url: "googlelogin",
+        data: {
+          name,
+          email,
+        },
+      })
+        .then((response) => {
+          const payload = {
+            alertOn: true,
+            name: response.data.name,
+            organization: response.data.organization,
+            alertMsg: `Welcome ${response.data.name} to ${response.data.organization} KANBAN! tasks board!`,
+          };
+          this.$emit("successGoogleLogin", payload);
+          localStorage.setItem("access_token", response.data.access_token);
+        })
+        .catch((err) => {
+          const payload = {
+            alertMsg: "EMAIL/PASSWORD INVALID",
+          };
+          this.$emit("failGoogleLogin", payload);
+        })
+        .finally((_) => {
+          this.loginEmail = "";
+          this.loginPassword = "";
+        });
     },
     backWelcome() {
       this.$emit("backWelcome");

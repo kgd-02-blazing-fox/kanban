@@ -10,6 +10,7 @@
       @deleteTaskFail="taskDeleteFail"
       @updateTaskStatus="statusUpdate"
       @updateTaskStatusFailed="updateFailed"
+      @taskContentUpdate="statusUpdate"
     ></TaskBoard>
   </div>
 </template>

@@ -14,6 +14,7 @@
     <LoginForm
       v-else-if="position === 'login'"
       @successLogin="loggedIn"
+      @successGoogleLogin="successGoogleLogin"
       @failLogin="failedLogin"
       @backWelcome="showWelcome"
     ></LoginForm>
@@ -41,6 +42,9 @@ export default {
     },
     showWelcome() {
       this.position = "welcome";
+    },
+    successGoogleLogin(data){
+      this.$emit("googleLoginSucceeded", data)
     },
     loggedIn(data) {
       this.$emit("loginSucceeded", data);

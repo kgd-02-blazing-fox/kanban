@@ -4,6 +4,7 @@
       v-if="taskBoardPosition === 'TaskEdit' "
       :spesificTaskData="spesificTaskData"
       @cancelAdd="backTaskBoard"
+      @succesEditTask="editTaskUpdated"
     ></TaskEdit>
     <TaskNew
       v-if="taskBoardPosition === 'TaskNew' "
@@ -52,28 +53,30 @@ export default {
   },
   methods: {
     deleteTask(id) {
-      KanbanAPI({
-        method: "DELETE",
-        url: `tasks/${id}`,
-        headers: {
-          access_token: localStorage.getItem("access_token"),
-        },
-      })
-        .then((response) => {
-          const payload = {
-            alertMsg: "Task Deleted",
-          };
-          this.$emit("taskDelete", payload);
+      confirm("ARE YOU SURE THIS IS YOUR TASK?");
+      if (true) {
+        KanbanAPI({
+          method: "DELETE",
+          url: `tasks/${id}`,
+          headers: {
+            access_token: localStorage.getItem("access_token"),
+          },
         })
-        .catch((err) => {
-          const payload = {
-            alertMsg: "Cannot delete task",
-          };
-          this.$emit("deleteTaskFail", payload);
-        });
+          .then((response) => {
+            const payload = {
+              alertMsg: "Task Deleted",
+            };
+            this.$emit("taskDelete", payload);
+          })
+          .catch((err) => {
+            const payload = {
+              alertMsg: "Sorry, It Is Not Yours. Only the owner Allowed to delete the tasks",
+            };
+            this.$emit("deleteTaskFail", payload);
+          });
+      }
     },
     getTaskToEdit(id) {
-      this.taskBoardPosition = "TaskEdit";
       console.log(id);
       KanbanAPI({
         method: "GET",
@@ -83,15 +86,20 @@ export default {
         },
       })
         .then(({ data }) => {
+          this.taskBoardPosition = "TaskEdit";
           this.spesificTaskData = data;
           console.log(this.spesificTaskData);
         })
         .catch((err) => {
-          console.log(err);
+          const data = {
+            alertMsg: `You Only Allowed To Updated Your Task Status!`,
+          };
+          this.$emit("updateTaskStatusFailed", data);
         });
     },
     editTaskUpdated(data) {
-      console.log(data);
+      this.taskBoardPosition = "MainBoard";
+      this.$emit("taskContentUpdate", data);
     },
     updateTaskStatus(data) {
       KanbanAPI({
