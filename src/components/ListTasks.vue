@@ -48,7 +48,7 @@ export default {
         addTaskToServer(){
             axios({
                 method:'POST',
-                url: 'https://mykanban-ichlasul.herokuapp.com/tasks/',
+                url: 'https://kanabanichlas.herokuapp.com/tasks/',
                 headers: {
                     token: localStorage.getItem('token')
                 },

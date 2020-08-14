@@ -10732,7 +10732,7 @@ var _default = {
 
       (0, _axios.default)({
         method: 'POST',
-        url: 'https://mykanban-ichlasul.herokuapp.com/users/login',
+        url: 'https://kanabanichlas.herokuapp.com/login',
         data: {
           email: this.email,
           password: this.password
@@ -10753,7 +10753,7 @@ var _default = {
 
       (0, _axios.default)({
         method: 'POST',
-        url: 'https://mykanban-ichlasul.herokuapp.com/users/login/google',
+        url: 'https://kanabanichlas.herokuapp.com/login/google',
         headers: {
           id_token: googleUser.getAuthResponse().id_token
         }
@@ -11069,7 +11069,7 @@ var _default = {
 
       (0, _axios.default)({
         method: 'POST',
-        url: 'https://mykanban-ichlasul.herokuapp.com/users/register',
+        url: 'https://kanabanichlas.herokuapp.com/register',
         data: {
           email: this.email,
           password: this.password
@@ -11352,7 +11352,7 @@ var _default = {
 
       (0, _axios.default)({
         method: 'DELETE',
-        url: "https://mykanban-ichlasul.herokuapp.com/tasks/".concat(this.dataid),
+        url: "https://kanabanichlas.herokuapp.com/tasks/".concat(this.dataid),
         headers: {
           token: localStorage.getItem('token')
         }
@@ -11368,7 +11368,7 @@ var _default = {
 
       (0, _axios.default)({
         method: 'PUT',
-        url: "https://mykanban-ichlasul.herokuapp.com/tasks/".concat(this.dataid),
+        url: "https://kanabanichlas.herokuapp.com/tasks/".concat(this.dataid),
         headers: {
           token: localStorage.getItem('token')
         },
@@ -11403,7 +11403,7 @@ var _default = {
 
       (0, _axios.default)({
         method: 'PUT',
-        url: "https://mykanban-ichlasul.herokuapp.com/tasks/".concat(this.dataid),
+        url: "https://kanabanichlas.herokuapp.com/tasks/".concat(this.dataid),
         headers: {
           token: localStorage.getItem('token')
         },
@@ -11438,7 +11438,7 @@ var _default = {
 
       (0, _axios.default)({
         method: 'PUT',
-        url: "https://mykanban-ichlasul.herokuapp.com/tasks/".concat(this.dataid),
+        url: "https://kanabanichlas.herokuapp.com/tasks/".concat(this.dataid),
         headers: {
           token: localStorage.getItem('token')
         },
@@ -11655,7 +11655,7 @@ var _default = {
 
       (0, _axios.default)({
         method: 'POST',
-        url: 'https://mykanban-ichlasul.herokuapp.com/tasks/',
+        url: 'https://kanabanichlas.herokuapp.com/tasks/',
         headers: {
           token: localStorage.getItem('token')
         },
@@ -12156,7 +12156,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
 var _default = {
   name: "App",
   data: function data() {
@@ -12210,7 +12209,7 @@ var _default = {
 
       (0, _axios.default)({
         methods: 'GET',
-        url: 'https://mykanban-ichlasul.herokuapp.com/tasks/',
+        url: 'https://kanabanichlas.herokuapp.com/tasks/',
         headers: {
           token: localStorage.getItem('token')
         }
@@ -12372,7 +12371,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41389" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35653" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

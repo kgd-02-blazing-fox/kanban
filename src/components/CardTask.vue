@@ -50,7 +50,7 @@ export default {
         deleteformupdate(){
             axios({
                 method: 'DELETE',
-                url: `https://mykanban-ichlasul.herokuapp.com/tasks/${this.dataid}`,
+                url: `https://kanabanichlas.herokuapp.com/tasks/${this.dataid}`,
                 headers: {
                     token: localStorage.getItem('token')
                 }
@@ -67,7 +67,7 @@ export default {
         updateform(){
             axios({
                 method: 'PUT',
-                url: `https://mykanban-ichlasul.herokuapp.com/tasks/${this.dataid}`,
+                url: `https://kanabanichlas.herokuapp.com/tasks/${this.dataid}`,
                 headers: {
                     token: localStorage.getItem('token')
                 },
@@ -98,7 +98,7 @@ export default {
 
             axios({
                 method: 'PUT',
-                url: `https://mykanban-ichlasul.herokuapp.com/tasks/${this.dataid}`,
+                url: `https://kanabanichlas.herokuapp.com/tasks/${this.dataid}`,
                 headers: {
                     token: localStorage.getItem('token')
                 },
@@ -132,7 +132,7 @@ export default {
 
             axios({
                 method: 'PUT',
-                url: `https://mykanban-ichlasul.herokuapp.com/tasks/${this.dataid}`,
+                url: `https://kanabanichlas.herokuapp.com/tasks/${this.dataid}`,
                 headers: {
                     token: localStorage.getItem('token')
                 },

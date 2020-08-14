@@ -70,7 +70,7 @@ export default {
     setToken(){
       axios({
         method: 'POST',
-        url: 'https://mykanban-ichlasul.herokuapp.com/users/login',
+        url: 'https://kanabanichlas.herokuapp.com/login',
         data: {
           email: this.email,
           password: this.password
@@ -90,7 +90,7 @@ export default {
 
         axios({
           method: 'POST',
-          url: 'https://mykanban-ichlasul.herokuapp.com/users/login/google',
+          url: 'https://kanabanichlas.herokuapp.com/login/google',
           headers: {
             id_token: googleUser.getAuthResponse().id_token
           }
