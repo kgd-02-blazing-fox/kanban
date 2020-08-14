@@ -35,6 +35,11 @@
                 <div>
                   <button type="submit" class="btn btn-warning">Submit</button>
                   <button @click="backWelcome" class="btn btn-warning">Cancel</button>
+                  <GoogleLogin
+                    :params="params"
+                    :renderParams="renderParams"
+                    :onSuccess="onSuccess"
+                  ></GoogleLogin>
                 </div>
               </form>
             </div>
@@ -47,6 +52,7 @@
 
 <script>
 import KanbanAPI from "../config/KanbanAPI";
+import GoogleLogin from "vue-google-login";
 
 export default {
   name: "LoginForm",
@@ -54,8 +60,19 @@ export default {
     return {
       loginEmail: "",
       loginPassword: "",
+      params: {
+        client_id:
+          "722681282902-tr36pll0jrmvharg2o98uc64joqhegvs.apps.googleusercontent.com",
+      },
+
+      renderParams: {
+        width: 250,
+        height: 50,
+        longtitle: true,
+      },
     };
   },
+  components: { GoogleLogin },
   methods: {
     login() {
       KanbanAPI({
@@ -86,6 +103,12 @@ export default {
           this.loginEmail = "";
           this.loginPassword = "";
         });
+    },
+    onSuccess(googleUser) {
+      console.log(googleUser);
+
+      // This only gets the user information: id, name, imageUrl and email
+      console.log(googleUser.getBasicProfile());
     },
     backWelcome() {
       this.$emit("backWelcome");
