@@ -1,16 +1,24 @@
 <template>
     <div>
+        <Navbar :currentRoute="currentPage" @changePage="changePage"></Navbar>
         <section class="inner-section">
             <Login v-if="currentPage === 'login'" @changePage="changePage"></Login>
             <Register v-if="currentPage === 'register'" @changePage="changePage"></Register>
+            <div class="ui" v-if="currentPage === 'dashboard'">
+                <div class="categories">
+                    <KanbanList v-for="categoryTitle in categoryTitles" :categoryTitle="categoryTitle" :key="categoryTitle" :tasks="tasks"></KanbanList>
+                </div>
+            </div>
             <AddTaskForm v-if="currentPage === 'addForm'" @getAllTasks="getAllTasks" @changePage="changePage"></AddTaskForm>
         </section>
     </div>
 </template>
 
 <script>
+import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Register from './components/Register';
+import KanbanList from './components/KanbanList';
 import AddTaskForm from './components/AddTask';
 import axios from 'axios';
 export default {
@@ -23,13 +31,15 @@ export default {
         };
     },
     components: {
+        Navbar,
         Login,
         Register,
-        AddTask
+        KanbanList,
+        AddTaskForm
     },
     methods: {
         getAllTasks() {
-            axios.get('http://localhost:3000/todos', {
+            axios.get('http://localhost:3000/', {
                 headers: {
                     access_token: localStorage.getItem('access_token')
                 }
