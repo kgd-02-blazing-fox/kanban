@@ -138,6 +138,7 @@ export default {
       this.hasAccount = true;
     },
     logSend() {
+      console.log(process.env.VUE_APP_BASE_URL)
       axios({
         method: "POST",
         url: process.env.VUE_APP_BASE_URL + "/user/login",
