@@ -115,3 +115,6 @@ dist
 .yarn/install-state.gz
 .pnp.*
 index1.html
+.firebase/
+.firebaserc
+firebase.json
