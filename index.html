@@ -1,204 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <meta name="google-signin-client_id"
+    content="738046604527-chvd7ddkl6o80g181mvntrv3fdu6al74.apps.googleusercontent.com">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <!-- <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet"> -->
-  <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> -->
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Lemonada', cursive;
-      background-image: url('./assets/img/Mountain.jpg');
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position-x: center;
-      background-position-y: center;
-    }
-
-
-    .header {
-      background-color: #5252526b;
-      height: 65px;
-    }
-
-    .header .nav {
-      margin: 0;
-      padding: 10px;
-    }
-
-    .mainKanban {
-      margin: 0 10px;
-    }
-
-    .scrolling-wrapper {
-      overflow-x: auto;
-      height: 100vh;
-      width: fixed;
-    }
-
-    .bodyContent {
-      border-radius: 5px;
-      border: solid 1px #dadadaad;
-      background-color: #ebecf0;
-      box-sizing: border-box;
-      margin: 5px 0px;
-      padding: 3px 2px;
-      width: 372px;
-    }
-
-    .content-kanban {
-      border-radius: 5px;
-      border: solid 1px #dadadaad;
-      background-color: #f4f5f7;
-      margin: 5px 0px;
-      padding: 3px 2px;
-    }
-  </style>
-
-
-  <title>Kanban Apps</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="icon" type="image/png" href="./assets/img/kanban.png">
+  <title>Kanban</title>
 </head>
 
 <body>
-  <!-- HEADER & LOGOUT -->
-  <div class="header container-fluid">
-    <div class="nav row d-flex justify-content-between">
-      <div>
+  <div id="app">
 
-      </div>
-      <div>
-        <img src="./assets/img/Kanban.png" width="100px">
-      </div>
-      <div id="logout">
-        <a href="#" style="color: #8da2ac;"><i class="fas fa-sign-out-alt fa-2x"></i></a>
-      </div>
-    </div>
   </div>
 
-  <!-- KANBAN BODY -->
-  <div class="mainKanban mt-2 ">
-    <div class="row scrolling-wrapper flex-row flex-nowrap " id="kanbanBody">
+  <!-- SCRIPTS -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="./script/google.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="./src/main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="./script/requests.js"></script>
+  <!-- END SCRIPTS -->
 
-      <!-- BACKLOG -->
-      <div class="backlog container">
-        <div class="bodyContent" id="backlogContent">
-          <div class="d-flex justify-content-start">
-            <div>BACKLOG</div>
-          </div>
-          <div class="content container-lg-12">
-            <div class="content-kanban container-fluid d-flex justify-content-between">
-              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum deleniti, doloribus dolorem error
-                maiores dolor impedit quam blanditiis corrupti ducimus!</p>
-              <div>
-                <a href="#"><i class="fas fa-pen-square"></i></a>
-                <a href="#"><i class="fas fa-trash-alt"></i></a>
-              </div>
-            </div>
-            <div class="container-fluid">User</div>
-            <div class="container-fluid d-flex justify-content-end">
-              <a href="#"><i class="fas fa-arrow-alt-circle-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PRODUCT -->
-      <div class="product container">
-        <div class="bodyContent" id="productContent">
-          <div class="d-flex justify-content-start">
-            <div>PRODUCT</div>
-          </div>
-          <div class="content container-lg-12">
-            <div class="content-kanban container-fluid d-flex justify-content-between">
-              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis dolores laborum quasi quidem dicta
-                ipsa.</p>
-              <div>
-                <a href="#"><i class="fas fa-pen-square"></i></a>
-                <a href="#"><i class="fas fa-trash-alt"></i></a>
-              </div>
-            </div>
-            <div class="container-fluid">User</div>
-            <div class="container-fluid d-flex justify-content-between">
-              <a href="#"><i class="fas fa-arrow-circle-left"></i></a>
-              <a href="#"><i class="fas fa-arrow-alt-circle-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- DEVELOPMENT -->
-      <div class="development container">
-        <div class="bodyContent" id="developmentContent">
-          <div class="d-flex justify-content-start">
-            <div>DEVELOPMENT</div>
-          </div>
-          <div class="content container-lg-12">
-            <div class="content-kanban container-fluid d-flex justify-content-between">
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing.</p>
-              <div>
-                <a href="#"><i class="fas fa-pen-square"></i></a>
-                <a href="#"><i class="fas fa-trash-alt"></i></a>
-              </div>
-            </div>
-            <div class="container-fluid">User</div>
-            <div class="container-fluid d-flex justify-content-between">
-              <a href="#"><i class="fas fa-arrow-circle-left"></i></a>
-              <a href="#"><i class="fas fa-arrow-alt-circle-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- DONE -->
-      <div class="done container">
-        <div class="bodyContent" id="doneContent">
-          <div class="d-flex justify-content-start">
-            <div>DONE</div>
-          </div>
-          <div class="content container-lg-12">
-            <div class="content-kanban container-fluid d-flex justify-content-between">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem cumque alias consectetur.</p>
-              <div>
-                <!-- <a href="#"><i class="fas fa-pen-square"></i></a> -->
-                <a href="#"><i class="fas fa-archive"></i></a>
-              </div>
-            </div>
-            <div class="container-fluid">User</div>
-            <div class="container-fluid d-flex justify-content-end">
-              <a href="#"><i class="fas fa-check-circle"></i></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> -->
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
-  </script>
-  <script src="https://kit.fontawesome.com/d327c23d67.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
