@@ -29,7 +29,7 @@
                     :category="category"
                     :categories="categories"
                     :tasks="tasks"
-                    @refetchTasks="$_MainPage_fetchTask"
+                    @refetchTasks="globalRefetch"
                 >
                 </KanbanCategories>
             </div>
@@ -56,6 +56,8 @@
 import axios from "axios"
 import KanbanCategories from "../components/KanbanCategories.vue"
 import GoogleLogin from 'vue-google-login';
+import io from 'socket.io-client'
+
 export default {
     name:"MainPage",
     data() {
@@ -65,6 +67,13 @@ export default {
             userName:"",
             userOrganization:""
         }
+    },
+    mounted () {
+      this.socket = io.connect('https://kanban-laurentius-server.herokuapp.com')
+
+      this.socket.on('latestUpdate', () => {
+        this.$_MainPage_fetchTask()
+      })
     },
     methods:{
         $_MainPage_fetchUser() {
@@ -85,6 +94,10 @@ export default {
                     console.log(err)
                 }) 
             }
+        },
+        globalRefetch() {
+          this.socket.emit('afterUpdate'),
+          this.$_MainPage_fetchTask()
         },
         $_MainPage_fetchTask() {
             if (localStorage.getItem("access_token")) {

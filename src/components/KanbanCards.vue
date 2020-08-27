@@ -94,7 +94,7 @@ export default {
             let category
             if (direction === "Right") category = this.categories[this.categories.indexOf(this.category)+1]
             else if (direction === "Left") category = this.categories[this.categories.indexOf(this.category)-1]
-            // // else    //implement drag here
+            
             axios({
                 method:"PATCH",
                 url:`https://kanban-laurentius-server.herokuapp.com/tasks/${id}`,
