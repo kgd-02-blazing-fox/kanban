@@ -45,7 +45,6 @@ import GoogleLogin from 'vue-google-login';
 
 
 
-
 export default {
   name: 'login',
   data() {
