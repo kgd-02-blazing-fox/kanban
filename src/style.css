@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&family=Galada&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+    border-spacing: 0;
+    
+}
+
+a , a:hover{
+    text-decoration: none;
+    color: black;
+}
+
+body{
+    /* font-family: 'Roboto', sans-serif; */
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    font-family: 'DM Sans', sans-serif;
+    background-image: url('/img/3.jpg');
+    background-size: cover;
+    /* background: -webkit-linear-gradient(left, #75bcff, #2464ef); */
+}
+
+
+
+.kanan-navbar .link, .kanan-navbar .logout {
+    margin-right: 10px;
+    padding: 5px 25px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-size: 16px;
+    text-decoration: none;
+    text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+}
+
+.kanan-navbar .link:hover {
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+.kanan-navbar .logout {
+    margin-left: 15px;
+    color: white;
+    background-color: rgb(255, 0, 0);
+}
+
+.kanan-navbar .logout:hover {
+    color: white;
+    background-color: rgb(250, 108, 108); 
+}
+
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.mykanban-title{
+    font-family: 'Galada', cursive;
+    /* background-color: khaki; */
+    align-items: center;
+    font-size: 34px;
+    padding-right: 15px;
+    padding-left: 15px;
+    border-radius: 0 25px 0 25px;
+}
+
+/* LANDING PAGE */
+
+.landing-page{
+    margin-left: 95px;
+    margin-top: 80px;
+}
+
+.lp-title{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+}
+
+.lp-paragraph{
+    margin-top: 20px;
+    margin-bottom: 40px;
+    line-height: 25px;
+    font-size: 18px;
+}
+
+.button {
+    /* border: 1.5px solid khaki; */
+    /* background-color: rgb(245, 238, 178); */
+    background-color: tomato;
+    color: white;
+
+    text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: normal;
+}
+.button:hover{
+    background-color: khaki;
+
+    
+}
+
+
+
+/* Login */
+
+.login{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 350px;
+    margin-top: 140px;
+    border-radius: 20px;
+}
+
+.login .kiri{
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    height:300px ; 
+    width: 400px; 
+    background-color: rgb(240, 240, 240);
+}
+
+/* About Form */
+
+
+
+.judul-form{
+    /* font-size: 26px; */
+    margin-bottom: 20px;
+    font-size: 28px; 
+    font-weight: bold;
+    /* text-shadow: 1px 1px 10px rgba(0,0,0,0.5); */
+    font-family: 'Galada', cursive;
+}
+
+.input-form{
+    border-radius: 10px;
+    border: 0;
+    padding: 10px 10px;
+    text-align: center;
+    font-size: 16px;
+    width: 300px;
+    border-bottom: 2px solid blue;
+}
+
+.button-form{
+    /* #75bcff, #2464ef */
+    border: 0; font-size: 16px; padding: 10px 35px;
+    background-color: #000000;
+    color: white;
+    width: 300px;
+    border-radius: 10px;
+    border-bottom: 2px solid rgb(156, 156, 156);
+
+    /* background-color: -webkit-linear-gradient(left, #75bcff, #2464ef); */
+
+    
+}
+
+.button-form:hover{
+    background-color: #75bcff;
+    border-bottom: 2px solid blue;
+}
+
+.form-group{
+    border: 0;
+}
+
+.button-forget-pass{
+    font-size: 1px; text-align: right; color: rgba(0, 0, 0, 0.479);
+}
+
+.button-forget-pass:hover{
+    cursor: pointer;
+}
+
+/* Paragraf */
+
+.paragraf{
+    font-weight:normal;
+    color: rgba(0, 0, 0, 0.733); 
+    font-size: 16px; 
+    line-height: 15px; 
+    text-align: center;
+}
+
+
+
+/* List Task */
+
+
+.list2 .headerTask{
+    /* background-color:violet;  */
+    padding: 10px 30px; 
+    font-size: 24px; 
+    font-weight:700; 
+    text-transform:uppercase;
+    color: black
+}
+
+
+/* sii board */
+
+.kotak-besar{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;   
+}
+.kotak-besar .mycard{
+    width: 300px;
+    background-color: rgba(0, 0, 0, 0.507);
+    /* background-colorgba(0, 0, 0, 0.507)07); */
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.kotak-besar .mycard .header{
+    color: white;
+    font-size: 22px;
+    font-weight: regular;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: purple; */
+}
+
+.kotak-besar .mycard .header .title{
+    display: inline-block;
+    /* border: 1px solid white; */
+    padding: 10px;
+    text-transform: capitalize;
+}
+.kotak-besar .mycard .header .edit-title{
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.kotak-besar .mycard .header .edit-title:hover{
+    cursor: pointer;
+    background-color: rgb(184, 184, 184);
+}
+.kotak-besar .mycard .task{
+    font-size: 18px;
+    font-weight: regular;
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+
+    display: flex; justify-content: space-between;
+
+}
+.kotak-besar .mycard .task .task-title{
+    cursor: pointer;
+
+}
+
+.kotak-besar .mycard .task .task-title:focus{
+    border: 0;
+}
+
+
+
+.kotak-besar .mycard .task .task-title:hover{
+    color: rgb(0, 0, 255);
+}
+
+.kotak-besar .mycard .task .button-next{
+    cursor: pointer;
+
+}
+
+.kotak-besar .mycard .task .button-next:hover{
+    color: rgba(0, 60, 255, 0.651);
+
+}
+
+
+
+
+.kotak-besar .mycard .button-add{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.kotak-besar .mycard .button-add:hover{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.746);
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+}
+

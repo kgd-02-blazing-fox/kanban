@@ -1,2 +1,5 @@
 # kanban
-client repo for kanban
+
+**Link Deploy :**
+
+* **[Kanban_Client](https://kanabanichlas.web.app/)**
