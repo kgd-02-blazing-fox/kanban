@@ -1,7 +1,6 @@
 <template>
   <div class="card text-center mx-auto my-2" style="width: 16rem;">
     <div class="card-body">
-      <!-- {{list}} -->
       <h5 class="card-title text-left">{{task.title}}</h5>
       <p class="card-text text-left">{{task.description}}</p>
 

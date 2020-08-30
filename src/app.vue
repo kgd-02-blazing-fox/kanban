@@ -48,7 +48,6 @@ export default {
     },
     logoutSuccess(result) {
       this.$gAuth.signOut();
-      // delete localStorage.token
       localStorage.clear();
       this.checkLogin();
     },
