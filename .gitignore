@@ -1,0 +1,8 @@
+node_modules
+template.html
+dist
+.cache
+.firebase
+
+.firebaserc
+firebase.json
