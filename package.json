@@ -1,0 +1,42 @@
+{
+  "name": "kanban-client",
+  "version": "1.0.0",
+  "description": "client repo for kanban",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idazanggara/kanban-client.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/idazanggara/kanban-client/issues"
+  },
+  "homepage": "https://github.com/idazanggara/kanban-client#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
+    "bootstrap-vue": "^2.6.1",
+    "dotenv": "^8.2.0",
+    "draggable": "^4.2.0",
+    "remove": "^0.1.5",
+    "s": "^1.0.0",
+    "socket.io-client": "^2.3.0",
+    "swa": "^0.1.1",
+    "sweetalert2": "^9.10.0",
+    "vue": "^2.6.11",
+    "vue-google-oauth2": "^1.4.0",
+    "vue-hot-reload-api": "^2.3.4",
+    "vue-sweetalert2": "^3.0.3",
+    "vue-text-truncate": "^1.0.3"
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^3.1.1",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
